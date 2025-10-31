@@ -1,0 +1,58 @@
+{
+  "layer": "top",
+  "position": "right",
+  "exclusive": false,
+  "reload_style_on_change": true,
+  "margin": "10 10 10 0",
+  "height": 30,
+  "mod": "overlay",
+  "spacing": 10,
+
+  "modules-left": [
+	"image#album",
+	"custom/spotify",
+
+  ],
+  "modules-center": [
+	"group/music"
+  ],
+
+  "custom/spotify":{
+	  "format": "{text}",
+	  "tooltip": false,
+	  "max-length": 40,
+	  "exec": "python $HOME/.config/waybar/scripts/spotify_status.py; /bin/bash $HOME/.config/waybar/scripts/spotify_image.sh",
+	  "interval": 5,
+	  "on-click": "flatpak run com.spotify.Client",
+  },
+  "image#album": {
+	"path": "/home/hvidal/.config/waybar/right-bar/image.jpg",
+	"size": 100,
+	"interval": 5,
+  },
+
+  "group/music": {
+	"orientation": "horizontal",
+	"modules": [
+		"custom/prev",
+		"custom/pause",
+		"custom/next"
+	]
+  },
+
+  "custom/prev":{
+	"format": "",
+	"tooltip": false,
+	"on-click": "playerctl previous",
+  },
+  "custom/pause": {
+	"format": "",
+	"tooltip": false,
+	"on-click": "playerctl play-pause",
+  },
+  "custom/next":{
+	"format": "",
+	"tooltip": false,
+	"on-click": "playerctl next",
+  },
+}

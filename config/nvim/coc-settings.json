@@ -1,0 +1,18 @@
+{
+  "suggest.noselect": true,
+  "suggest.autoTrigger": "always",
+  "suggest.minTriggerInputLength": 0,
+  "coc.source.buffer.enable": true,
+  "inlayHint.enable": false,
+
+  "languageserver": {
+    "go": {
+      "command": "gopls",
+      "rootPatterns": ["go.mod"],
+      "trace.server": "verbose",
+      "filetypes": ["go"]
+    }
+  }
+}
+
+

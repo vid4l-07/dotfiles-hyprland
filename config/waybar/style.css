@@ -1,0 +1,194 @@
+@define-color bg rgba(21, 18, 27, 50);
+@define-color bg2 #1e1e2e;
+@define-color fg #8d8d8d;
+@define-color orange #fab387;
+@define-color yellow #f9e2af;
+@define-color green #a6e3a1;
+@define-color blue #89b4fa;
+@define-color red #ba5757;
+
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "JetBrains Mono";
+    font-weight: bold;
+    font-size: 13px;
+    min-height: 0;
+}
+
+window#waybar {
+    background: @bg;
+    color: #cdd6f4;
+}
+
+#workspaces button {
+    padding: 5px;
+	border: none;
+	background: @bg2;
+
+}
+
+#workspaces button.active {
+    color: #fff;
+}
+
+#workspaces button.focused {
+    color: @yellow;
+    /* background: #eba0ac; */
+    border-radius: 10px;
+}
+
+#workspaces button.urgent {
+    color: @green;
+    /* background: #a6e3a1; */
+    border-radius: 10px;
+}
+
+#workspaces button:hover {
+	color: #fff;
+	border-color: @bg2;
+    /* background: #11111b; */
+    /* color: #11111b; */
+    /* border-radius: 5px; */
+}
+
+#custom-wallpaper,
+#custom-power,
+#window,
+#clock,
+#battery,
+#pulseaudio,
+#network,
+#bluetooth,
+#workspaces,
+#tray,
+#backlight {
+    background: @bg2;
+    opacity: 0.8;
+    padding: 0px 10px;
+    /* margin: 3px 0px; */
+    margin: 0px 0px;
+    margin-top: 5px;
+	margin-bottom: 5px;
+    border: 1px solid @bg2;
+}
+
+#backlight {
+    border-radius: 10px 0px 0px 10px;
+}
+
+#workspaces {
+    background: @bg2;
+    border-radius: 10px;
+    margin-left: 10px;
+    padding-right: 0px;
+    padding-left: 5px;
+}
+
+#custom-power_profile {
+    color: #a6e3a1;
+    border-left: 0px;
+    border-right: 0px;
+}
+
+#window {
+    border-radius: 10px;
+    margin-left: 60px;
+    margin-right: 60px;
+}
+
+#custom-spotify {
+	margin: 10px;
+	color: @green;
+}
+
+#clock {
+    color: @orange;
+    border-radius: 10px 10px 10px 10px;
+    margin-left: 10px;
+	margin-right: 10px;
+    border-right: 0px;
+}
+
+#network {
+    color: @yellow;
+    border-radius: 10px 0px 0px 10px;
+    border-left: 0px;
+    border-right: 0px;
+}
+
+#bluetooth {
+    color: @blue;
+    border-radius: 0px 10px 10px 0px;
+    margin-right: 10px
+} 
+
+#pulseaudio {
+    color: @blue;
+	border-radius: 10px;
+    border-left: 0px;
+    border-right: 0px;
+}
+
+#battery {
+    color: @green;
+    border-radius: 10px;
+    margin-right: 10px;
+    border-left: 0px;
+}
+#battery.warning {
+    color: @orange;
+}
+#battery.critical {
+    color: @red;
+} 
+
+#custom-power {
+	padding-right: 12px;
+	border-radius: 10px;
+	margin-right: 10px;
+	color: @red;
+}
+
+menu {
+	padding: 15px;
+	border-radius: 15px;
+	background: @bg;
+	color: #cdd6f4;
+}
+menuitem {
+	border-radius: 5px;
+}
+menuitem:hover {
+	background-color: @bg2;
+}
+
+
+/* Right bar */
+#custom-spotify {
+	margin: 15px;
+	color: @green;
+}
+
+#image {
+	margin-top: 20px;
+	border-radius: 20px;
+}
+
+#music {
+	margin: 0 50px 15px 50px;
+}
+
+#custom-prev,
+#custom-pause,
+#custom-next {
+	margin: 0 10px 0 10px;
+}
+
+#custom-prev:hover,
+#custom-pause:hover,
+#custom-next:hover {
+	color: @fg;
+}
+
+

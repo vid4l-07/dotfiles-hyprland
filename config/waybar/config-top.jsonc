@@ -1,0 +1,151 @@
+// icons: https://fontawesome.com/search
+{
+	"reload_style_on_change": true,
+    "layer": "top",
+    "position": "top",
+    "mod": "dock",
+    "exclusive": true,
+    "passthrough": false,
+    "gtk-layer-shell": true,
+    "height": 30,
+    "modules-left": [
+        "hyprland/workspaces",
+    ],
+		// "custom/spotify",
+    // "modules-center": [
+    //     "mpris"
+    // ],
+    "modules-right": [
+        "network",
+        "bluetooth",
+        "battery",
+        // "backlight",
+        "pulseaudio",
+		"clock",
+		"custom/power",
+    ],
+    "hyprland/workspaces": {
+        "format": "{icon}",
+        "on-scroll-up": "hyprctl dispatch workspace e+1",
+        "on-scroll-down": "hyprctl dispatch workspace e-1",
+		"format-icons": {
+            "1": "",
+            "2": "",
+            "3": "",
+            "4": "",
+            "5": ""
+        },
+        "persistent_workspaces": {
+            "*": 3
+        }
+    },
+    "hyprland/window": {
+        "format": "{}"
+    },
+
+    // "tray": {
+    //     "icon-size": 18,
+    //     "spacing": 10
+    // },
+	"custom/spotify":{
+		"format": " {text}",
+		"tooltip": false,
+		"exec": "python $HOME/.config/waybar/scripts/spotify_status.py; /bin/bash $HOME/.config/waybar/scripts/spotify_image.sh",
+		"interval": 5,
+		"on-click": "flatpak run com.spotify.Client",
+	},
+	"clock": {
+		"interval": 60,
+		"max-length": 25,
+		"tooltip": false,
+		"format": "{:%H:%M}",
+		"format-alt": "{:%a, %b %d, %Y}",
+	},
+
+    "backlight": {
+        "device": "intel_backlight",
+        "format": "{icon} {percent}%",
+        "format-icons": [
+            "󰃞",
+            "󰃟",
+            "󰃠"
+        ],
+        "on-scroll-up": "brightnessctl -q set 1%+",
+        "on-scroll-down": "brightnessctl -q set 1%-"
+    },
+    "battery": {
+        "states": {
+            "good": 95,
+            "warning": 40,
+            "critical": 30
+        },
+        "format": "{icon} {capacity}%",
+        "format-charging": " {capacity}%",
+        "format-plugged": " {capacity}%",
+        "format-alt": "{time} {icon}",
+        "format-icons": [
+            "󰂎 ",
+            "󰁺 ",
+            "󰁻 ",
+            "󰁼 ",
+            "󰁽 ",
+            "󰁾 ",
+            "󰁿 ",
+            "󰂀 ",
+            "󰂁 ",
+            "󰂂 ",
+            "󰁹 "
+        ]
+    },
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "tooltip": false,
+        "format-muted": "   Muted",
+        "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+        "on-scroll-up": "wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+",
+        "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%",
+        "scroll-step": 100,
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": [
+                "  ",
+                "  ",
+                "  "
+            ]
+        }
+    },
+    "network": {
+        "format-wifi": " ",
+        "format-ethernet": "{ipaddr}/{cidr}",
+        "tooltip-format": "{essid} - {ifname} via {gwaddr}",
+        "format-linked": "{ifname} (No IP)",
+        // "format-disconnected": "Disconnected ⚠",
+        "format-disconnected": "󰖪 ",
+        "format-alt": "{essid} {ipaddr}"
+	},
+    "bluetooth": {
+        "format": " {status}",
+        "format-disabled": "", // an empty format will hide the module
+        "format-connected": " {num_connections}",
+        "tooltip-format": "{device_alias}",
+        "tooltip-format-connected": " {device_enumerate}",
+        "tooltip-format-enumerate-connected": "{device_alias}"
+    },
+	"custom/power": {
+		"format" : "",
+		"menu": "on-click",
+		"menu-file": "~/.config/waybar/powermenu.xml",
+		"menu-actions": {
+			"shutdown": "shutdown",
+			"reboot": "reboot",
+			"lock": "hyprlock",
+			"logout": "hyprctl dispatch exit",
+		},
+	},
+
+}
