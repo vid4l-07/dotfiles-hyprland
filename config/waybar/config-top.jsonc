@@ -10,6 +10,7 @@
     "height": 30,
     "modules-left": [
         "hyprland/workspaces",
+		"custom/target",
     ],
 		// "custom/spotify",
     // "modules-center": [
@@ -53,6 +54,12 @@
 		"exec": "python $HOME/.config/waybar/scripts/spotify_status.py; /bin/bash $HOME/.config/waybar/scripts/spotify_image.sh",
 		"interval": 5,
 		"on-click": "flatpak run com.spotify.Client",
+	},
+	"custom/target":{
+		"format": " {text}",
+		"tooltip": false,
+		"exec": "/bin/cat $HOME/.config/waybar/scripts/target.txt",
+		"interval": 5,
 	},
 	"clock": {
 		"interval": 60,
@@ -100,7 +107,7 @@
     "pulseaudio": {
         "format": "{icon} {volume}%",
         "tooltip": false,
-        "format-muted": "   Muted",
+       "format-muted": "  Muted",
         "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
         "on-scroll-up": "wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+",
         "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%",
@@ -138,6 +145,7 @@
     },
 	"custom/power": {
 		"format" : "",
+		"tooltip": false,
 		"menu": "on-click",
 		"menu-file": "~/.config/waybar/powermenu.xml",
 		"menu-actions": {

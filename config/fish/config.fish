@@ -22,3 +22,7 @@ set -g fish_greeting ""
 #colores
 set -U fish_color_error red
 
+#funciones
+function settarget
+	echo $argv > $HOME/.config/waybar/scripts/target.txt
+end
