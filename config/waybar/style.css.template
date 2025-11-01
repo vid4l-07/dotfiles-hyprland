@@ -1,12 +1,12 @@
-@define-color bg #1e1e2e;
-@define-color bg2 #15121b;
-@define-color fg #8d8d8d;
-@define-color txt #fff;
-@define-color orange #fab387;
-@define-color yellow #f9e2af;
-@define-color green#a6e3a1;
-@define-color blue #89b4fa;
-@define-color red #ba5757;
+@define-color bg ${bg};
+@define-color bg2 ${bg2};
+@define-color fg ${fg};
+@define-color txt ${txt};
+@define-color orange ${orange};
+@define-color yellow ${yellow};
+@define-color green${green};
+@define-color blue ${blue};
+@define-color red ${red};
 
 * {
     border: none;

@@ -1,0 +1,64 @@
+#Modifique el archivo .template que es el que genera los de configuracion con el script $HOME/.config/hypr/scripts/theme.sh
+cursor_shape          Underline
+cursor_underline_thickness 1
+window_padding_width  20
+
+# Special
+#background #1E1F27
+background ${bg2}
+foreground ${fg}
+
+tab_bar_style powerline
+
+active_tab_background ${fg}
+active_tab_foreground ${bg}
+inactive_tab_background ${bg}
+inactive_tab_foreground ${fg}
+
+active_border_color     ${cyan}
+inactive_border_color   #7D7D7D
+
+
+# Black
+color0 ${black}
+color8 ${black}
+
+# Red
+color1 ${red}
+color9 ${red}
+
+# Green
+color2  ${green}
+color10 ${green}
+
+# Yellow
+color3  ${yellow}
+color11 ${orange}
+
+# Blue 
+color4 ${blue}
+color12 ${blue}
+
+# Magenta
+color5  ${magenta}
+color13 ${pink}
+
+# Cyan
+color6  ${cyan}
+color14 ${cyan}
+
+# White
+color7  ${white}
+color15 #fff
+
+#Grey
+color16 ${grey}
+color17 ${grey}
+
+# Cursor
+cursor ${grey}
+cursor_text_color #1a1b26
+
+# Selection highlight
+selection_foreground #7aa2f7
+selection_background #28344a

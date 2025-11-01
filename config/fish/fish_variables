@@ -3,8 +3,8 @@
 SETUVAR __fish_initialized:3800
 SETUVAR fish_color_autosuggestion:brblack
 SETUVAR fish_color_cancel:\x2dr
-SETUVAR fish_color_command:normal
-SETUVAR fish_color_comment:red
+SETUVAR fish_color_command:green
+SETUVAR fish_color_comment:brblack
 SETUVAR fish_color_cwd:green
 SETUVAR fish_color_cwd_root:red
 SETUVAR fish_color_end:green

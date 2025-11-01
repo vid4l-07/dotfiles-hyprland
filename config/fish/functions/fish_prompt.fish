@@ -13,7 +13,7 @@ function fish_prompt
     set -l prompt_status ""
 	set -l last_status $status
 
-    echo -n $prompt"愛" "["(prompt_login)"]" $pwd(prompt_pwd)
+	echo -n $prompt"愛" $normal"["(prompt_login)"]" $pwd(prompt_pwd)
 
 	echo ""
     set_color green
