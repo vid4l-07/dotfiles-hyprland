@@ -1,0 +1,42 @@
+@define-color bg #26232a;
+@define-color bg2 #19171c;
+@define-color fg #8b8792;
+@define-color txt #8b8792;
+@define-color orange #ad7b6a;
+@define-color yellow #a08061;
+@define-color green#5d8686;
+@define-color blue #5f7e94;
+@define-color red #924f58;
+
+
+window {
+    background-color: @bg2;
+    border: 1px solid @bg;
+    border-radius: 10px;
+}
+
+#input {
+    margin: 5px;
+    padding: 4px;
+    border: none;
+	background-color: @bg2;
+	color: @fg;
+}
+#outer-box {
+	margin: 5px;
+	border: none;
+}
+#inner-box {
+    background-color: @bg2;
+}
+
+#entry {
+    padding: 8px;
+    color: @txt;
+}
+
+#entry:selected {
+	padding: 10px;
+    background-color: @bg;
+    color: @fg;
+}

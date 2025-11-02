@@ -1,0 +1,42 @@
+@define-color bg ${bg};
+@define-color bg2 ${bg2};
+@define-color fg ${fg};
+@define-color txt ${txt};
+@define-color orange ${orange};
+@define-color yellow ${yellow};
+@define-color green${green};
+@define-color blue ${blue};
+@define-color red ${red};
+
+
+window {
+    background-color: @bg2;
+    border: 1px solid @bg;
+    border-radius: 10px;
+}
+
+#input {
+    margin: 5px;
+    padding: 4px;
+    border: none;
+	background-color: @bg2;
+	color: @fg;
+}
+#outer-box {
+	margin: 5px;
+	border: none;
+}
+#inner-box {
+    background-color: @bg2;
+}
+
+#entry {
+    padding: 8px;
+    color: @txt;
+}
+
+#entry:selected {
+	padding: 10px;
+    background-color: @bg;
+    color: @fg;
+}
