@@ -1,0 +1,10 @@
+layer=top
+margin=10
+padding=10
+font=JetBrainsMono 12
+border-radius=8
+border-size=1
+border-color=${bg}
+background-color=${bg2}
+text-color=${txt}
+icons=true

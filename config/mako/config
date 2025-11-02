@@ -1,0 +1,10 @@
+layer=top
+margin=10
+padding=10
+font=JetBrainsMono 12
+border-radius=8
+border-size=1
+border-color=#26232a
+background-color=#19171c
+text-color=#8b8792
+icons=true

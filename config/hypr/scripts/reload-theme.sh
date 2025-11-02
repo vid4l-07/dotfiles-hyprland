@@ -9,12 +9,15 @@ sed -n "/${theme}-theme-inicio/,/${theme}-theme-fin/p" $colors-all > $colors
 
 kitty=$HOME/.config/kitty/color.ini
 waybar=$HOME/.config/waybar/style.css
-
+mako=$HOME/.config/mako/config
 
 set -o allexport
 source $colors
 set +o allexport
 
-for i in $kitty $waybar; do
+for i in $kitty $waybar $mako; do
 		envsubst < "$i.template" > "$i"
 done
+kill $(pgrep mako) 2>/dev/null
+mako &
+
