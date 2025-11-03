@@ -22,6 +22,9 @@ if [ "$ALBUM_ART_URL" != "$(/bin/cat /tmp/url-album.txt)" ];then
 		exit 1
 	fi
 
-	# Descarga temporal de la imagen
 	wget -q "$ALBUM_ART_URL" -O $HOME/.config/waybar/right-bar/image.jpg
 fi
+
+python $HOME/.config/waybar/scripts/spotify_status.py
+
+echo $ALBUM_ART_URL

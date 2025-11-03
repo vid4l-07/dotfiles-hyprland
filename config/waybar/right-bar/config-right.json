@@ -21,7 +21,7 @@
 	  "format": "{text}",
 	  "tooltip": false,
 	  "max-length": 40,
-	  "exec": "python $HOME/.config/waybar/scripts/spotify_status.py; /bin/bash $HOME/.config/waybar/scripts/spotify_image.sh",
+	  "exec": "/bin/bash $HOME/.config/waybar/scripts/spotify.sh",
 	  "interval": 5,
 	  "on-click": "flatpak run com.spotify.Client",
   },
