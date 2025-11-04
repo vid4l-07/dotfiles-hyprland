@@ -9,11 +9,15 @@ alias la='ls -a'
 alias lla='ls -la'
 alias v='nvim'
 alias cat='bat'
+alias fzf-history='history | fzf'
 
 bind ctrl-k history-token-search-backward
 bind ctrl-j history-token-search-forward
 bind alt-k up-or-search
 bind alt-j down-or-search
+
+bind ctrl-f fzf
+bind ctrl-h fzf-history
 
 #prompt de bienvenida
 # set colores (bash $HOME/.config/bin/ver-colores.sh)

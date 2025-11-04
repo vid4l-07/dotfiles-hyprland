@@ -173,14 +173,14 @@ map("n", "<A-k>", ":m .-2<CR>==", { silent = true })
 map("v", "<A-j>", ":m '>+1<CR>gv=gv", { silent = true })
 map("v", "<A-k>", ":m '<-2<CR>gv=gv", { silent = true })
 
--- NERDTree
-map("n", "<leader>t", ":NERDTreeToggle<CR>", opts)
-map("n", "<C-t>", ":NERDTreeFocus<CR>", opts)
-
 -- Cambiar buffer
 map("n", "<leader>n", ":bnext<CR>", opts)
 map("n", "<leader>p", ":bprevious<CR>", opts)
 map("n", "<leader>x", ":bdelete<CR>", opts)
+
+-- Oil
+map("n", "-", "<CMD>Oil<CR>")  -- (buffer de los archivos, para crear, borrar, cambiar nombre...)
+
 
 -- Ejecutar archivo actual
 map("n", "<leader>r", ":RunFile<CR>", opts)
@@ -200,8 +200,10 @@ vim.api.nvim_set_keymap(
 ------------------------------------------------------------
 -- Instalar plugins
 require("lazy").setup({
-  -- NERDTree
-  { "preservim/nerdtree" },
+  --fzf (archivos) (instalar el paquete fzf desde la terminal)
+  {"ibhagwan/fzf-lua"},
+  --Oil
+  {"stevearc/oil.nvim"},
 
   -- Themes
   { "mhartington/oceanic-next" },
@@ -272,19 +274,36 @@ require("blink.cmp").setup({
 	},
 })
 
-
--- NerdTree
--- autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
-vim.api.nvim_create_autocmd("BufEnter", {
-  pattern = "*",
-  callback = function()
-    if vim.fn.winnr("$") == 1 and vim.b.NERDTree and vim.b.NERDTree.isTabTree then
-      vim.cmd("quit")
-    end
-  end,
+-- fzf
+local fzf = require("fzf-lua")
+fzf.setup({
+	-- "fzf-vim",
+	winopts = {
+		border = "solid",
+		fullscreen = true,
+		preview = {
+			border = "solid",
+			winopts	= {
+				number = false,
+			},
+		},
+	},
 })
--- LSP (Servidor de lenguajes); Mason (instala los servidores)
+-- binds-fzf
+map("n", "<leader>f", fzf.files)
+map("n", "<leader>b", fzf.buffers)
+map("n", "<leader>ls", fzf.lsp_document_symbols) -- navega entre las variables
+map("n", "<leader>ld", fzf.diagnostics_document) -- navega entre errores
+map("n", "<leader>r", fzf.registers)  -- registros (portapapeles)
 
+-- Oil
+require("oil").setup({
+	confirmation = {
+		border = "solid",
+	},
+})
+
+-- LSP (Servidor de lenguajes); Mason (instala los servidores)
 require('mason').setup()
 require('mason-lspconfig').setup({
   ensure_installed = {
