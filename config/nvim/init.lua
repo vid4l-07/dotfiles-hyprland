@@ -294,7 +294,6 @@ map("n", "<leader>f", fzf.files)
 map("n", "<leader>b", fzf.buffers)
 map("n", "<leader>ls", fzf.lsp_document_symbols) -- navega entre las variables
 map("n", "<leader>ld", fzf.diagnostics_document) -- navega entre errores
-map("n", "<leader>r", fzf.registers)  -- registros (portapapeles)
 
 -- Oil
 require("oil").setup({

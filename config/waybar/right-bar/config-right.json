@@ -22,13 +22,13 @@
 	  "tooltip": false,
 	  "max-length": 40,
 	  "exec": "/bin/bash $HOME/.config/waybar/scripts/spotify.sh",
-	  "interval": 5,
+	  "interval": 3,
 	  "on-click": "flatpak run com.spotify.Client",
   },
   "image#album": {
 	"path": "/home/hvidal/.config/waybar/right-bar/image.jpg",
 	"size": 100,
-	"interval": 5,
+	"interval": 3,
   },
 
   "group/music": {

@@ -27,4 +27,7 @@ fi
 
 python $HOME/.config/waybar/scripts/spotify_status.py
 
-echo $ALBUM_ART_URL
+if [ '$(python $HOME/.config/waybar/scripts/spotify_status.py)' == 'No music' ]; then
+	rm $HOME/.config/waybar/right-bar/image.jpg
+fi
+
