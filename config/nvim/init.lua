@@ -34,39 +34,24 @@ vim.opt.showmode = false
 vim.opt.foldcolumn = "2"
 
 ------------------------------------------------------------
--- Airline (barra superior e inferior)
-------------------------------------------------------------
-vim.g["airline#extensions#tabline#enabled"] = 1
-vim.g["airline#extensions#tabline#left_sep"] = " "
-vim.g["airline#extensions#tabline#left_alt_sep"] = "|"
-vim.g["airline#extensions#whitespace#enabled"] = 0
-vim.g["airline#extensions#tabline#buffers_label"] = "" -- quita la palabra buffers
-vim.g.airline_section_c = "" -- quitar nombre del archivo
-vim.g.airline_section_y = "" -- quitar encoding
-vim.g.airline_section_z = "" -- quitar lineas/columnas
-
-------------------------------------------------------------
 -- Tema y colores
 ------------------------------------------------------------
 vim.opt.termguicolors = true
 -- Fondo transparente
-vim.cmd("hi Normal guibg=NONE ctermbg=NONE")
 
-vim.g.indentLine_char = "⏽ "
 vim.g.molokai_original = 1
 
 -- vim.cmd("colorscheme nord")
 -- vim.cmd("colorscheme kanagawa")
 -- vim.cmd("colorscheme onedark")
 
--- vim.g.airline_theme = 'nord'
--- vim.g.airline_theme = 'base16_atelier_cave'
 
 -- Tema (se cambia desde changetheme)
 vim.cmd("source $HOME/.config/nvim/theme.vim")
 
 -- Colores Blink	:Inspect para ver los highlights de lo seleccionado
 vim.cmd([[ 
+	"hi Normal guibg=NONE ctermbg=NONE
 	hi! link @variable Text
 
     hi! link BlinkCmpScrollBarThumb Normal
@@ -79,7 +64,6 @@ vim.cmd([[
 	hi! link BlinkCmpDocSeparator Pmenu
 	hi! link BlinkCmpDocCursorLine Pmenu
 
-
 	hi! link BlinkCmpKindFunction @function
 	hi! link BlinkCmpKindConstructor @constructor
 	hi! link BlinkCmpKindVariable @module
@@ -87,6 +71,15 @@ vim.cmd([[
 	hi! link BlinkCmpKindClass @type
 	hi! link BlinkCmpKindOperator @operator
 	hi! link BlinkCmpKindText @string
+
+	hi! link StatusLine Normal
+	hi! link StatusLineNC Normal
+	hi! link LualineInsertA LualineVisualA
+	hi! link LualineInsertB LualineVisualB
+
+	hi! link BufferLineTab Normal
+	hi! link BufferLineFill BufferLineInfo
+
 
 	hi! link NormalFloat Pmenu
 
@@ -109,13 +102,6 @@ function _G.RunFile()
   if ext == "py" then
     cmd = "python3 " .. file
   elseif ext == "c" then
-    cmd = "gcc " .. file .. " -o /tmp/a.out && /tmp/a.out"
-  elseif ext == "cpp" then
-    cmd = "g++ " .. file .. " -o /tmp/a.out && /tmp/a.out"
-  elseif ext == "js" then
-    cmd = "node " .. file
-  elseif ext == "sh" then
-    cmd = "bash " .. file
   elseif ext == "lua" then
     cmd = "lua " .. file
   else
@@ -211,9 +197,10 @@ require("lazy").setup({
   { "nordtheme/vim" },
   { "rebelot/kanagawa.nvim" },
 
-  -- Airline
-  { "vim-airline/vim-airline" },
-  { "vim-airline/vim-airline-themes" },
+  -- Lualine
+  {'nvim-lualine/lualine.nvim', dependencies = { 'nvim-tree/nvim-web-devicons' }},
+  -- Bufferline
+  {'akinsho/bufferline.nvim', version = "*", dependencies = 'nvim-tree/nvim-web-devicons'},
 
   -- Syntax y completado
   { 'nvim-treesitter/nvim-treesitter' },
@@ -234,6 +221,18 @@ require("lazy").setup({
 ------------------------------------------------------------
 -- Config de plugins
 ------------------------------------------------------------
+
+-- lualine
+require('config.lualine')
+-- bufferline
+require("bufferline").setup({
+  options = {
+    show_buffer_icons = false,
+    show_buffer_close_icons = true,
+    show_close_icon = false,
+  }
+})
+
 -- blink.cmp
 require("blink.cmp").setup({
 	cmdline = { enabled = true },

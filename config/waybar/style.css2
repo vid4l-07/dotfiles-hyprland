@@ -1,12 +1,12 @@
-@define-color bg #26232a;
-@define-color bg2 #19171c;
-@define-color fg #8b8792;
-@define-color txt #8b8792;
-@define-color orange #ad7b6a;
-@define-color yellow #a08061;
-@define-color green#5d8686;
-@define-color blue #5f7e94;
-@define-color red #924f58;
+@define-color bg #1e1e2e;
+@define-color bg2 #15121b;
+@define-color fg #8d8d8d;
+@define-color txt #ffffff;
+@define-color orange #fab387;
+@define-color yellow #f9e2af;
+@define-color green#a6e3a1;
+@define-color blue #89b4fa;
+@define-color red #ba5757;
 
 * {
     border: none;
