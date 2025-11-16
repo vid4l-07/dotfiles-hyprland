@@ -34,62 +34,6 @@ vim.opt.showmode = false
 vim.opt.foldcolumn = "2"
 
 ------------------------------------------------------------
--- Tema y colores
-------------------------------------------------------------
-vim.opt.termguicolors = true
--- Fondo transparente
-
-vim.g.molokai_original = 1
-
--- vim.cmd("colorscheme nord")
--- vim.cmd("colorscheme kanagawa")
--- vim.cmd("colorscheme onedark")
-
-
--- Tema (se cambia desde changetheme)
-vim.cmd("source $HOME/.config/nvim/theme.vim")
-
--- Colores Blink	:Inspect para ver los highlights de lo seleccionado
-vim.cmd([[ 
-	"hi Normal guibg=NONE ctermbg=NONE
-	hi! link @variable Text
-
-    hi! link BlinkCmpScrollBarThumb Normal
-	hi! link BlinkCmpScrollBarGutter Normal
-
-	hi! link BlinkCmpMenuSelection Search
-
-	hi! link BlinkCmpDoc Pmenu
-	hi! link BlinkCmpDocBorder Pmenu
-	hi! link BlinkCmpDocSeparator Pmenu
-	hi! link BlinkCmpDocCursorLine Pmenu
-
-	hi! link BlinkCmpKindFunction @function
-	hi! link BlinkCmpKindConstructor @constructor
-	hi! link BlinkCmpKindVariable @module
-	hi! link BlinkCmpKindFolder @module
-	hi! link BlinkCmpKindClass @type
-	hi! link BlinkCmpKindOperator @operator
-	hi! link BlinkCmpKindText @string
-
-	hi! link StatusLine Normal
-	hi! link StatusLineNC Normal
-	hi! link LualineInsertA LualineVisualA
-	hi! link LualineInsertB LualineVisualB
-
-	hi! link BufferLineTab Normal
-	hi! link BufferLineFill BufferLineInfo
-
-
-	hi! link NormalFloat Pmenu
-
-	hi EndOfBuffer guifg=bg guibg=bg
-	hi LineNr guibg=bg
-	hi foldcolumn guibg=bg
-	hi VertSplit guibg=#302d38 guifg=#302d38
-]])
-
-------------------------------------------------------------
 -- Funciones
 ------------------------------------------------------------
 -- Ejecutar archivo actual según su extensión
@@ -167,14 +111,13 @@ map("n", "<leader>x", ":bdelete<CR>", opts)
 -- Oil
 map("n", "-", "<CMD>Oil<CR>")  -- (buffer de los archivos, para crear, borrar, cambiar nombre...)
 
-
 -- Ejecutar archivo actual
 map("n", "<leader>r", ":RunFile<CR>", opts)
 
 -- Copilot
 map("n", "<leader>i", ":lua CopilotToggle()<CR>", opts)
 
-	-- Aceptar sugerencia con Ctrl+i si no hay menú visible
+	-- Aceptar sugerencia con Ctrl+l si no hay menú visible
 vim.api.nvim_set_keymap(
   "i",
   "<C-l>",
@@ -192,10 +135,9 @@ require("lazy").setup({
   {"stevearc/oil.nvim"},
 
   -- Themes
-  { "mhartington/oceanic-next" },
   { "catppuccin/nvim", name = "catppuccin" },
-  { "nordtheme/vim" },
   { "rebelot/kanagawa.nvim" },
+  {'AlexvZyl/nordic.nvim'},
 
   -- Lualine
   {'nvim-lualine/lualine.nvim', dependencies = { 'nvim-tree/nvim-web-devicons' }},
@@ -338,3 +280,32 @@ require "nvim-treesitter.configs".setup({
 	ignore_install = {},
 	auto_install = true,
 })
+
+------------------------------------------------------------
+-- Tema y colores
+------------------------------------------------------------
+vim.opt.termguicolors = true 
+
+vim.g.molokai_original = 0
+
+-- Tema (se cambia desde script)
+vim.cmd("source $HOME/.config/nvim/theme.vim")
+
+-- Colores Blink	:Inspect para ver los highlights de lo seleccionado
+vim.cmd([[ 
+	"hi Normal guibg=NONE ctermbg=NONE
+
+	hi! link BlinkCmpKindFunction @function
+	hi! link BlinkCmpKindConstructor @constructor
+	hi! link BlinkCmpKindVariable @module
+	hi! link BlinkCmpKindFolder @module
+	hi! link BlinkCmpKindClass @type
+	hi! link BlinkCmpKindOperator @operator
+	hi! link BlinkCmpKindText @string
+
+	hi EndOfBuffer guifg=bg guibg=bg
+	hi LineNr guibg=bg
+	"hi FoldColumn guibg=bg
+	highlight! link FoldColumn Normal
+	hi VertSplit guibg=#302d38 guifg=#302d38
+]])
