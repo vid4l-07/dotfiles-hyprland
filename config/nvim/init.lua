@@ -306,6 +306,7 @@ vim.cmd([[
 	hi EndOfBuffer guifg=bg guibg=bg
 	hi LineNr guibg=bg
 	"hi FoldColumn guibg=bg
-	highlight! link FoldColumn Normal
+	hi! link FoldColumn Normal
+	hi! link SignColumn Normal
 	hi VertSplit guibg=#302d38 guifg=#302d38
 ]])

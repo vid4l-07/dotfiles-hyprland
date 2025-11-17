@@ -4,18 +4,17 @@
     "layer": "top",
     "position": "top",
     "mod": "dock",
-    "exclusive": true,
+    "exclusive": false,
     "passthrough": false,
     "gtk-layer-shell": true,
-    "height": 30,
+    "height": 10,
     "modules-left": [
-        "hyprland/workspaces",
 		"custom/target",
     ],
 		// "custom/spotify",
-    // "modules-center": [
-    //     "mpris"
-    // ],
+    "modules-center": [
+			"hyprland/workspaces",
+    ],
     "modules-right": [
         "network",
         "bluetooth",
@@ -23,6 +22,7 @@
         // "backlight",
         "pulseaudio",
 		"clock",
+		"custom/hide",
 		"custom/power",
     ],
     "hyprland/workspaces": {
@@ -48,6 +48,12 @@
     //     "icon-size": 18,
     //     "spacing": 10
     // },
+
+	"custom/hide":{
+		"format": "",
+		"tooltip": false,
+		"exec": "bash $HOME/.config/waybar/scripts/auto-hide.sh",
+	},
 	"custom/spotify":{
 		"format": " {text}",
 		"tooltip": false,

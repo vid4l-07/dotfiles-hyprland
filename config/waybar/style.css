@@ -18,19 +18,19 @@
 }
 
 window#waybar {
-    background: @bg2;
+    background: transparent;
     color: #cdd6f4;
 }
 
 #workspaces button {
     padding: 5px;
 	border: none;
-	background: @bg;
+	background: @bg2;
 
 }
 
 #workspaces button.active {
-    color: #fff;
+    color: @txt;
 }
 
 #workspaces button.focused {
@@ -47,7 +47,7 @@ window#waybar {
 
 #workspaces button:hover {
 	color: #fff;
-	border-color: @bg;
+	border-color: @bg2;
     /* background: #11111b; */
     /* color: #11111b; */
     /* border-radius: 5px; */
@@ -64,14 +64,13 @@ window#waybar {
 #workspaces,
 #tray,
 #backlight {
-    background: @bg;
+    background: @bg2;
     opacity: 0.8;
     padding: 0px 10px;
     /* margin: 3px 0px; */
     margin: 0px 0px;
     margin-top: 5px;
 	margin-bottom: 5px;
-    border: 1px solid @bg;
 }
 
 #backlight {
@@ -79,7 +78,7 @@ window#waybar {
 }
 
 #workspaces {
-    background: @bg;
+    background: @bg2;
     border-radius: 10px;
     margin-left: 10px;
     padding-right: 5px;
@@ -165,7 +164,7 @@ menuitem {
 	border-radius: 5px;
 }
 menuitem:hover {
-	background-color: @bg;
+	background-color: @bg2;
 }
 
 
@@ -194,7 +193,7 @@ menuitem:hover {
 #custom-prev:hover,
 #custom-pause:hover,
 #custom-next:hover {
-	color: @bg;
+	color: @bg2;
 	transition: all 0.3s ease;
 }
 
