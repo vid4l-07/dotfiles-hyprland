@@ -15,7 +15,7 @@ let s:gui02 = "585260"
 let s:gui03 = "655f6d"
 let s:gui04 = "7e7887"
 let s:gui05 = "8b8792"
-let s:gui06 = "8e5ee"
+let s:gui06 = "8e5ee0"
 let s:gui07 = "efecf4"
 let s:gui08 = "924f58"
 let s:gui09 = "ad7b6a"
@@ -286,6 +286,31 @@ call <sid>hi("SpellBad",     "", s:gui00, "", s:cterm00, "undercurl", s:gui08)
 call <sid>hi("SpellLocal",   "", s:gui00, "", s:cterm00, "undercurl", s:gui0C)
 call <sid>hi("SpellCap",     "", s:gui00, "", s:cterm00, "undercurl", s:gui0D)
 call <sid>hi("SpellRare",    "", s:gui00, "", s:cterm00, "undercurl", s:gui0E)
+
+hi! link @variable Text
+hi! link BlinkCmpScrollBarThumb Normal
+hi! link BlinkCmpScrollBarGutter Normal
+
+hi! link BlinkCmpMenuSelection Search
+
+hi! link BlinkCmpDoc Pmenu
+hi! link BlinkCmpDocBorder Pmenu
+hi! link BlinkCmpDocSeparator Pmenu
+hi! link BlinkCmpDocCursorLine Pmenu
+
+hi! link StatusLine Normal
+hi! link StatusLineNC Normal
+hi! link LualineInsertA LualineVisualA
+hi! link LualineInsertB LualineVisualB
+
+hi! link BufferLineTab Normal
+hi! link BufferLineFill BufferLineInfo
+
+hi! link NormalFloat Pmenu
+
+hi! link BufferLineTab Normal
+hi! link BufferLineFill BufferLineInfo
+
 
 " neovim terminal
 if has('nvim')

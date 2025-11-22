@@ -134,11 +134,6 @@ require("lazy").setup({
   --Oil
   {"stevearc/oil.nvim"},
 
-  -- Themes
-  { "catppuccin/nvim", name = "catppuccin" },
-  { "rebelot/kanagawa.nvim" },
-  {'AlexvZyl/nordic.nvim'},
-
   -- Lualine
   {'nvim-lualine/lualine.nvim', dependencies = { 'nvim-tree/nvim-web-devicons' }},
   -- Bufferline
@@ -273,7 +268,6 @@ vim.api.nvim_create_autocmd("CursorHold", {
 
 --tree-sitter (Resalta sintaxis)
 require "nvim-treesitter.configs".setup({
-	-- ensure_installed = { "svelte", "typescript", "javascript", "html", "css", "php", "cpp", "rust", "astro", "zig", "python", "bash", "lua" },
 	highlight = { enable = true },
 	modules = {},
 	sync_install = true,
@@ -305,6 +299,7 @@ vim.cmd([[
 
 	hi EndOfBuffer guifg=bg guibg=bg
 	hi LineNr guibg=bg
+	hi! link BufferLineFill Normal
 	"hi FoldColumn guibg=bg
 	hi! link FoldColumn Normal
 	hi! link SignColumn Normal

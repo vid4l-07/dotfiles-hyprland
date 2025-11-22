@@ -3,10 +3,10 @@ if status is-interactive
 end
 
 # Aliases
-alias l='ls --color=auto'
-alias ll='ls -l'
-alias la='ls -a'
-alias lla='ls -la'
+alias ls='lsd'
+alias ll='lsd -l'
+alias la='lsd -a'
+alias lla='lsd -la'
 alias v='nvim'
 alias cat='bat'
 
@@ -20,6 +20,8 @@ bind alt-j down-or-search
 
 bind ctrl-f fzf-find
 bind ctrl-h fzf-history
+
+bind ctrl-o yazi # gestor de archivos
 
 #prompt de bienvenida
 # set colores (bash $HOME/.config/bin/ver-colores.sh)

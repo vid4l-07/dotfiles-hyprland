@@ -38,7 +38,7 @@ wofi=$HOME/.config/wofi/style.css
 vim=$HOME/.config/nvim/theme.vim
 
 declare -A vimthemes
-vimthemes[black]='atelier_cave'
+vimthemes[black]='smoke'
 vimthemes[catapuccin]='catppuccin'
 vimthemes[nordic]='nordic'
 
