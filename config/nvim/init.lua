@@ -21,6 +21,8 @@ vim.opt.clipboard = "unnamedplus"
 vim.opt.shell = "/bin/zsh"
 vim.cmd("syntax on")
 vim.opt.tabstop = 4
+vim.opt.tabstop = 4
+vim.opt.shiftwidth = 4
 vim.cmd("filetype on")
 vim.opt.ruler = true
 vim.opt.mouse = "a"
