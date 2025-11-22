@@ -136,6 +136,10 @@ require("lazy").setup({
   --Oil
   {"stevearc/oil.nvim"},
 
+  --themes
+  {"catppuccin/nvim"},
+  {"AlexvZyl/nordic.nvim"},
+
   -- Lualine
   {'nvim-lualine/lualine.nvim', dependencies = { 'nvim-tree/nvim-web-devicons' }},
   -- Bufferline
