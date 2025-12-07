@@ -4,7 +4,7 @@
 @define-color txt #8b8792;
 @define-color orange #ad7b6a;
 @define-color yellow #a08061;
-@define-color green#5d8686;
+@define-color green #5d8686;
 @define-color blue #5f7e94;
 @define-color red #924f58;
 
@@ -18,7 +18,7 @@
 }
 
 window#waybar {
-    background: transparent;
+    background: @bg2;
     color: #cdd6f4;
 }
 
@@ -26,7 +26,6 @@ window#waybar {
     padding: 5px;
 	border: none;
 	background: @bg2;
-
 }
 
 #workspaces button.active {
@@ -35,21 +34,17 @@ window#waybar {
 
 #workspaces button.focused {
     color: @yellow;
-    /* background: #eba0ac; */
     border-radius: 10px;
 }
 
 #workspaces button.urgent {
     color: @green;
-    /* background: #a6e3a1; */
     border-radius: 10px;
 }
 
 #workspaces button:hover {
-	color: #fff;
+	color: @txt;
 	border-color: @bg2;
-    /* background: #11111b; */
-    /* color: #11111b; */
     /* border-radius: 5px; */
 }
 
@@ -66,11 +61,9 @@ window#waybar {
 #backlight {
     background: @bg2;
     opacity: 0.8;
-    padding: 0px 10px;
-    /* margin: 3px 0px; */
-    margin: 0px 0px;
-    margin-top: 5px;
-	margin-bottom: 5px;
+    padding: 0px 7px;
+    /* margin-top: 5px; */
+	/* margin-bottom: 5px; */
 }
 
 #backlight {
@@ -92,13 +85,13 @@ window#waybar {
 }
 
 #window {
-    border-radius: 10px;
+	border-radius: 10px;
     margin-left: 60px;
     margin-right: 60px;
 }
 
 #custom-spotify {
-	margin: 10px;
+	/* margin: 10px; */
 	color: @green;
 }
 
@@ -148,10 +141,10 @@ window#waybar {
 } 
 
 #custom-power {
+	color: @red;
 	padding-right: 12px;
 	border-radius: 10px;
 	margin-right: 10px;
-	color: @red;
 }
 
 menu {

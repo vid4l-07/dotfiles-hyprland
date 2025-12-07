@@ -4,16 +4,16 @@
     "layer": "top",
     "position": "top",
     "mod": "dock",
-    "exclusive": false,
+    // "exclusive": false,
     "passthrough": false,
     "gtk-layer-shell": true,
     "height": 10,
     "modules-left": [
+		"hyprland/workspaces",
 		"custom/target",
     ],
 		// "custom/spotify",
     "modules-center": [
-			"hyprland/workspaces",
     ],
     "modules-right": [
         "network",
