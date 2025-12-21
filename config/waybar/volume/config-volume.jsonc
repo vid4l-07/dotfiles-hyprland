@@ -1,0 +1,52 @@
+{
+	"layer": "top",
+	"position": "bottom",
+	"exclusive": false,
+	"reload_style_on_change": true,
+	"height": 40,
+	"width": 150,
+	"margin": 70,
+	"mod": "dock",
+	"spacing": 0,
+
+	"modules-center": [
+		"pulseaudio",
+		"pulseaudio/slider",
+		"custom/hide"
+	],
+
+	"pulseaudio/slider": {
+		"min": 0,
+		"max": 100,
+		"expand": true,
+		"orientation": "horizontal",
+	},
+
+    "pulseaudio": {
+        "format": "{icon}",
+        "tooltip": false,
+        "format-muted": " ",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": [
+                "  ",
+                "  ",
+                "  "
+            ]
+        }
+    },
+
+
+	"custom/hide":{
+		"format": "",
+		"tooltip": false,
+		"exec": "bash $HOME/.config/waybar/volume/hide.sh",
+	},
+}
+
+

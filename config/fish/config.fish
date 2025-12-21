@@ -11,7 +11,7 @@ alias v='nvim'
 alias cat='bat'
 
 alias fzf-history='commandline -i (history | fzf)'
-alias fzf-find='commandline -i (fzf)'
+alias fzf-find='commandline -i (fzf --preview "cat {}")'
 
 bind ctrl-k history-token-search-backward
 bind ctrl-j history-token-search-forward

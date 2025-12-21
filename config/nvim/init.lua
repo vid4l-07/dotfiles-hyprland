@@ -139,6 +139,7 @@ require("lazy").setup({
   --themes
   {"catppuccin/nvim"},
   {"AlexvZyl/nordic.nvim"},
+  {"rebelot/kanagawa.nvim"},
 
   -- Lualine
   {'nvim-lualine/lualine.nvim', dependencies = { 'nvim-tree/nvim-web-devicons' }},
@@ -303,8 +304,8 @@ vim.cmd([[
 	hi! link BlinkCmpKindOperator @operator
 	hi! link BlinkCmpKindText @string
 
+	hi! link LineNr Normal
 	hi EndOfBuffer guifg=bg guibg=bg
-	hi LineNr guibg=bg
 	hi! link BufferLineFill Normal
 	"hi FoldColumn guibg=bg
 	hi! link FoldColumn Normal

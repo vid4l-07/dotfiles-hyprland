@@ -20,15 +20,16 @@
         "bluetooth",
         "battery",
         // "backlight",
-        "pulseaudio",
+        // "pulseaudio",
 		"clock",
-		"custom/hide",
+		// "custom/hide",
 		"custom/power",
     ],
     "hyprland/workspaces": {
         "format": "{icon}",
         "on-scroll-up": "hyprctl dispatch workspace e+1",
         "on-scroll-down": "hyprctl dispatch workspace e-1",
+		"all-outputs": true,
 		"format-icons": {
             "1": "",
             "2": "",
@@ -37,7 +38,7 @@
             "5": ""
         },
         "persistent_workspaces": {
-            "*": 3
+            "1": 5,
         }
     },
     "hyprland/window": {
@@ -108,7 +109,8 @@
     "pulseaudio": {
         "format": "{icon} {volume}%",
         "tooltip": false,
-       "format-muted": "  Muted",
+        // "format-muted": "  Muted",
+        "format-muted": "Muted",
         "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
         "on-scroll-up": "wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+",
         "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%",

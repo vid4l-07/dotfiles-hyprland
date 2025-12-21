@@ -23,7 +23,7 @@ window#waybar {
 }
 
 #workspaces button {
-    padding: 5px;
+    padding: 0 3px;
 	border: none;
 	background: @bg2;
 }
@@ -100,37 +100,42 @@ window#waybar {
 }
 
 #clock {
-    color: @orange;
+    /* color: @orange; */
+    color: @fg;
     border-radius: 10px 10px 10px 10px;
-    margin-left: 10px;
-	margin-right: 10px;
+    margin-left: 7px;
+	margin-right: 7px;
     border-right: 0px;
 }
 
 #network {
-    color: @yellow;
+    /* color: @yellow; */
+    color: @fg;
     border-radius: 10px 0px 0px 10px;
     border-left: 0px;
     border-right: 0px;
 }
 
 #bluetooth {
-    color: @blue;
+    /* color: @blue; */
+    color: @fg;
     border-radius: 0px 10px 10px 0px;
     margin-right: 10px
 } 
 
 #pulseaudio {
-    color: @blue;
+    /* color: @blue; */
+    color: @fg;
 	border-radius: 10px;
     border-left: 0px;
     border-right: 0px;
 }
 
 #battery {
-    color: @green;
+    /* color: @green; */
+    color: @fg;
     border-radius: 10px;
-    margin-right: 10px;
+    /* margin-right: 10px; */
     border-left: 0px;
 }
 #battery.warning {
@@ -142,6 +147,7 @@ window#waybar {
 
 #custom-power {
 	color: @red;
+	color: @fg;
 	padding-right: 12px;
 	border-radius: 10px;
 	margin-right: 10px;

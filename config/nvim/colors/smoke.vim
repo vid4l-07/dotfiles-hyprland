@@ -2,14 +2,15 @@
 " :colorscheme works in terminals supported by base16-shell scripts
 " User must set this variable in .vimrc
 "   let g:base16_shell_path=base16-builder/output/shell/
-if !has('gui_running')
-  if exists("g:base16_shell_path")
-    execute "silent !/bin/sh ".g:base16_shell_path."/Atelier_CaveDark.".&background.".sh"
-  endif
-endif
+
+"if !has('gui_running')
+"  if exists("g:base16_shell_path")
+"    execute "silent !/bin/sh ".g:base16_shell_path."/smoke.".&background.".sh"
+"  endif
+"endif
 
 " GUI color definitions
-let s:gui00 = "19171c"
+let s:gui00 = "19171d"
 let s:gui01 = "26232a"
 let s:gui02 = "585260"
 let s:gui03 = "655f6d"
@@ -56,7 +57,7 @@ endif
 " Theme setup
 hi clear
 syntax reset
-let g:colors_name = "Atelier_CaveDark"
+let g:colors_name = "smoke"
 
 " Highlighting function
 fun <sid>hi(group, guifg, guibg, ctermfg, ctermbg, attr, guisp)
@@ -214,6 +215,7 @@ call <sid>hi("htmlTag",     s:gui02, "", s:cterm02, "", "", "")
 call <sid>hi("javaScript",          s:gui05, "", s:cterm05, "", "", "")
 call <sid>hi("javaScriptBraces",    s:gui05, "", s:cterm05, "", "", "")
 call <sid>hi("javaScriptNumber",    s:gui09, "", s:cterm09, "", "", "")
+
 " pangloss/vim-javascript highlighting
 call <sid>hi("jsOperator",          s:gui0D, "", s:cterm0D, "", "", "")
 call <sid>hi("jsStatement",         s:gui0E, "", s:cterm0E, "", "", "")
@@ -304,7 +306,8 @@ hi! link LualineInsertA LualineVisualA
 hi! link LualineInsertB LualineVisualB
 
 hi! link BufferLineTab Normal
-hi! link BufferLineFill BufferLineInfo
+"hi! link BufferLineFill BufferLineInfo
+hi! link BufferLineFill Normal
 
 hi! link NormalFloat Pmenu
 
