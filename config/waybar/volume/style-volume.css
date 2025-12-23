@@ -13,7 +13,7 @@
     border-radius: 0;
     font-family: "JetBrains Mono";
     font-weight: bold;
-    font-size: 18px;
+    font-size: 22px;
     min-height: 0;
 	background: none;
 }
@@ -38,7 +38,7 @@ window#waybar {
 }
 
 #pulseaudio-slider trough {
-    min-height: 10px;
+    min-height: 4px;
     min-width: 100px;
     border-radius: 5px;
     background-color: @bg;

@@ -43,7 +43,7 @@ vimthemes[catapuccin]='catppuccin'
 vimthemes[nordic]='nordic'
 
 declare -A wallpapers
-wallpapers[black]='$HOME/.config/wallpapers/8.jpg' #$HOME/.config/wallpapers/15.jpg
+wallpapers[black]='$HOME/.config/wallpapers/1.jpeg'  #'$HOME/.config/wallpapers/8.jpg' #$HOME/.config/wallpapers/15.jpg
 wallpapers[catapuccin]='$HOME/.config/wallpapers/14.jpg'
 wallpapers[nordic]='$HOME/.config/wallpapers/2.jpg'
 

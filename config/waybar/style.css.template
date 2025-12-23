@@ -61,7 +61,7 @@ window#waybar {
 #backlight {
     background: @bg2;
     opacity: 0.8;
-    padding: 0px 7px;
+    padding: 0px 6px;
     /* margin-top: 5px; */
 	/* margin-bottom: 5px; */
 }
@@ -103,8 +103,8 @@ window#waybar {
     /* color: @orange; */
     color: @fg;
     border-radius: 10px 10px 10px 10px;
-    margin-left: 7px;
-	margin-right: 7px;
+	/* margin-left: 3px; */
+	margin-right: 6px;
     border-right: 0px;
 }
 
