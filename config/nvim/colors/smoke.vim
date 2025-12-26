@@ -289,9 +289,18 @@ call <sid>hi("SpellLocal",   "", s:gui00, "", s:cterm00, "undercurl", s:gui0C)
 call <sid>hi("SpellCap",     "", s:gui00, "", s:cterm00, "undercurl", s:gui0D)
 call <sid>hi("SpellRare",    "", s:gui00, "", s:cterm00, "undercurl", s:gui0E)
 
+" Highlighting para mis plugins
+call <sid>hi("BlinkCmpScrollBarThumb",        s:gui05, s:gui00, s:cterm05, s:cterm00, "", "")
+call <sid>hi("BlinkCmpScrollBarGutter",        s:gui05, s:gui00, s:cterm05, s:cterm00, "", "")
+call <sid>hi("StatusLineNC",        s:gui05, s:gui00, s:cterm05, s:cterm00, "", "")
+call <sid>hi("StatusLine",        s:gui05, s:gui00, s:cterm05, s:cterm00, "", "")
+call <sid>hi("BufferLineTab",        s:gui05, s:gui00, s:cterm05, s:cterm00, "", "")
+call <sid>hi("BufferLineFill",        s:gui05, s:gui00, s:cterm05, s:cterm00, "", "")
+call <sid>hi("BufferLineTab",        s:gui05, s:gui00, s:cterm05, s:cterm00, "", "")
+
 hi! link @variable Text
-hi! link BlinkCmpScrollBarThumb Normal
-hi! link BlinkCmpScrollBarGutter Normal
+"hi! link BlinkCmpScrollBarThumb Normal
+"hi! link BlinkCmpScrollBarGutter Normal
 
 hi! link BlinkCmpMenuSelection Search
 
@@ -300,18 +309,18 @@ hi! link BlinkCmpDocBorder Pmenu
 hi! link BlinkCmpDocSeparator Pmenu
 hi! link BlinkCmpDocCursorLine Pmenu
 
-hi! link StatusLine Normal
-hi! link StatusLineNC Normal
+"hi! link StatusLine Normal
+"hi! link StatusLineNC Normal
 hi! link LualineInsertA LualineVisualA
 hi! link LualineInsertB LualineVisualB
 
-hi! link BufferLineTab Normal
+"hi! link BufferLineTab Normal
+"hi! link BufferLineFill Normal
 "hi! link BufferLineFill BufferLineInfo
-hi! link BufferLineFill Normal
 
 hi! link NormalFloat Pmenu
 
-hi! link BufferLineTab Normal
+"hi! link BufferLineTab Normal
 hi! link BufferLineFill BufferLineInfo
 
 
