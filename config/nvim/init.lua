@@ -185,7 +185,7 @@ require("blink.cmp").setup({
 			draw = { columns = { { "label", gap = 3 }, { "kind_icon" }  } },
 		},
 		list = {
-			selection = { preselect = true }, -- selecciona el primer elemento auto
+			selection = { preselect = false }, -- selecciona el primer elemento auto
 		},
 		documentation = { auto_show = true, auto_show_delay_ms = 1000 },
 		ghost_text = { enabled = false },
@@ -198,13 +198,13 @@ require("blink.cmp").setup({
 	},
 	keymap = {
 		-- ['<Tab>'] = { 'select', 'fallback' },
-		--["<Tab>"] = { "select_next", "fallback" },     -- Tab = siguiente sugerencia
+		["<Tab>"] = { "select_next", "fallback" },     -- Tab = siguiente sugerencia
 		-- ["<S-Tab>"] = { "select_prev", "fallback" },   -- Shift+Tab = anterior
-		-- ["<S-CR>"] = { "accept", "fallback" }, -- Aceptar con enter
+		["<C-CR>"] = { "accept", "fallback" }, -- Aceptar con ctrl enter
 
 		-- ["<S-CR>"] = { "select_next", "fallback" },     -- Sift+Enter = siguiente sugerencia
 		-- ["<C-CR>"] = { "select_prev", "fallback" },   -- Ctrl+Enter = anterior
-		["<Tab>"] = { "accept", "fallback" }, -- Aceptar con Tab
+		-- ["<Tab>"] = { "accept", "fallback" }, -- Aceptar con Tab
 
 
 

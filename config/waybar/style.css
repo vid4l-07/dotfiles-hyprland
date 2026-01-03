@@ -1,4 +1,4 @@
-@define-color bg #201e23;
+@define-color bg #29262e;
 @define-color bg2 #19171c;
 @define-color fg #8b8792;
 @define-color txt #8b8792;
@@ -93,6 +93,11 @@ window#waybar {
 #custom-spotify {
 	/* margin: 10px; */
 	color: @green;
+}
+
+#custom-theme {
+	color: @txt;
+	padding: 0 4px;
 }
 
 #custom-target {

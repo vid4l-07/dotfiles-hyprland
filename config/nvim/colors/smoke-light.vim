@@ -9,24 +9,24 @@
 "  endif
 "endif
 "#
-
 " GUI color definitions
-let s:gui00 = "19171d"
-let s:gui01 = "26232a"
-let s:gui02 = "585260"
-let s:gui03 = "655f6d"
-let s:gui04 = "7e7887"
-let s:gui05 = "8b8792"
-let s:gui06 = "8e5ee0"
-let s:gui07 = "efecf4"
-let s:gui08 = "924f58"
-let s:gui09 = "ad7b6a"
-let s:gui0A = "a08061"
-let s:gui0D = "5d8676"
-let s:gui0C = "5f7e94"
-let s:gui0B = "5f6a9c"
-let s:gui0E = "685286"
-let s:gui0F = "8a618a"
+let s:gui00 = "f2f1f5" " fondo del archivo
+let s:gui01 = "e0e0e6" " fondo normal statusline y fondo numeros izq
+let s:gui02 = "c8c3d0" " numeros izquierda
+let s:gui03 = "b8b4c4" " comentarios
+let s:gui04 = "8f889f" " letras autocompletado sin seleccionar
+let s:gui05 = "5a5963" " bg de seleccion autocompletar y vavriables creo
+
+let s:gui06 = "8c72b0"
+let s:gui07 = "29262e"
+let s:gui08 = "c85d65"
+let s:gui09 = "d19b8a"
+let s:gui0A = "c8a27f"
+let s:gui0D = "5d8686"
+let s:gui0C = "7090b0"
+let s:gui0B = "7a8cc3"
+let s:gui0E = "8c72b0"
+let s:gui0F = "b084b0"
 
 " Terminal color definitions
 let s:cterm00 = "234   "

@@ -1,34 +1,22 @@
 #!/bin/bash
 
-options=('black' 'catapuccin' 'nordic')
-
-if [[ "$1" == "--help" || -z "$1" ]];then
-	echo -e "Usage: reload-theme [index]\n"
-	num=0
-	for i in "${options[@]}";do
-		echo "$i --> $num"
-		((num++))
-	done
-fi
-
-theme="${options[$1]}"
 colors=$HOME/.config/hypr/scripts/colors.env
+colors_all=$HOME/.config/hypr/scripts/colors.env-all
 
-correcto=false
-for i in "${options[@]}";do
-	if [[ "$theme" == "$i" ]];then
-		correcto=true
-	fi
-done
+indicador=$(sed -n "1p" $colors)
 
-if ! $correcto;then
-	echo 'No existe'
-	exit 1
+if [[ $indicador == "#0-i" ]];then
+	sed -n "/#1-i/,/#1-f/p" $colors_all > $colors
+	echo "" > $HOME/.config/waybar/scripts/theme.txt
+	theme="light"
+else
+	sed -n "/#0-i/,/#0-f/p" $colors_all > $colors
+	echo "" > $HOME/.config/waybar/scripts/theme.txt
+	theme="black"
 fi
 
 echo "$theme"
 
-sed -n "/${theme}-theme-inicio/,/${theme}-theme-fin/p" $colors-all > $colors
 
 hyprwallpaper=$HOME/.config/hypr/hyprpaper.conf
 kitty=$HOME/.config/kitty/color.ini
@@ -39,13 +27,11 @@ vim=$HOME/.config/nvim/theme.vim
 
 declare -A vimthemes
 vimthemes[black]='smoke'
-vimthemes[catapuccin]='catppuccin'
-vimthemes[nordic]='nordic'
+vimthemes[light]='smoke-light'
 
 declare -A wallpapers
 wallpapers[black]='$HOME/.config/wallpapers/1.jpeg'  #'$HOME/.config/wallpapers/8.jpg' #$HOME/.config/wallpapers/15.jpg
-wallpapers[catapuccin]='$HOME/.config/wallpapers/14.jpg'
-wallpapers[nordic]='$HOME/.config/wallpapers/2.jpg'
+wallpapers[light]='$HOME/.config/wallpapers/10.png'
 
 echo "colorscheme ${vimthemes[$theme]}" > $vim
 echo -en "preload = ${wallpapers[$theme]} \nwallpaper = ,${wallpapers[$theme]} \nipc = on" > $hyprwallpaper
@@ -59,6 +45,9 @@ set +o allexport
 for i in $kitty $waybar $mako $wofi; do
 		envsubst < "$i.template" > "$i"
 done
+
+kill -SIGUSR1 $(pgrep kitty)
+
 kill $(pgrep mako) 2>/dev/null
 mako &
 

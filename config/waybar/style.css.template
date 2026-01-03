@@ -95,6 +95,11 @@ window#waybar {
 	color: @green;
 }
 
+#custom-theme {
+	color: @txt;
+	padding: 0 4px;
+}
+
 #custom-target {
 	color: @red;
 }

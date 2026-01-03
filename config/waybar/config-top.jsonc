@@ -14,6 +14,7 @@
     ],
 		// "custom/spotify",
     "modules-center": [
+		"custom/theme"
     ],
     "modules-right": [
         "network",
@@ -26,19 +27,22 @@
 		"custom/power",
     ],
     "hyprland/workspaces": {
+		"on-click": "activate",
         "format": "{icon}",
-        "on-scroll-up": "hyprctl dispatch workspace e+1",
-        "on-scroll-down": "hyprctl dispatch workspace e-1",
-		"all-outputs": true,
 		"format-icons": {
             "1": "",
             "2": "",
             "3": "",
             "4": "",
-            "5": ""
+            "5": "",
+			// "active": "",
         },
-        "persistent_workspaces": {
-            "1": 5,
+        "persistent-workspaces": {
+            "1": [],
+            "2": [],
+            "3": [],
+            "4": [],
+            "5": [],
         }
     },
     "hyprland/window": {
@@ -54,9 +58,18 @@
 		"format": " {text}",
 		"tooltip": false,
 		"exec": "python $HOME/.config/waybar/scripts/spotify_status.py; /bin/bash $HOME/.config/waybar/scripts/spotify_image.sh",
-		"interval": 5,
+		"interval": 3,
 		"on-click": "flatpak run com.spotify.Client",
 	},
+
+	"custom/theme":{
+		"format": "{text}",
+		"tooltip": false,
+		"exec": "/bin/cat $HOME/.config/waybar/scripts/theme.txt",
+		"interval": 3,
+		"on-click": "$HOME/.config/hypr/scripts/toggle-theme.sh",
+	},
+
 	"custom/target":{
 		"format": " {text}",
 		"tooltip": false,
