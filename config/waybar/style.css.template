@@ -22,8 +22,16 @@ window#waybar {
     color: #cdd6f4;
 }
 
+#workspaces {
+    background: @bg2;
+    border-radius: 10px;
+    margin-left: 10px;
+    padding-right: 5px;
+    padding-left: 5px;
+}
+
 #workspaces button {
-    padding: 0 3px;
+    padding: 0 1px;
 	border: none;
 	background: @bg2;
 }
@@ -68,14 +76,6 @@ window#waybar {
 
 #backlight {
     border-radius: 10px 0px 0px 10px;
-}
-
-#workspaces {
-    background: @bg2;
-    border-radius: 10px;
-    margin-left: 10px;
-    padding-right: 5px;
-    padding-left: 5px;
 }
 
 #custom-power_profile {

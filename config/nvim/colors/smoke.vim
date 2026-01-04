@@ -347,6 +347,22 @@ hi TermCursorNC ctermfg=245    ctermbg=67     guifg=s:gui05 guibg=s:gui0C guisp=
   let g:terminal_color_15 = "#" . s:gui01
 endif
 
+hi! link BlinkCmpKindFunction @function
+hi! link BlinkCmpKindConstructor @constructor
+hi! link BlinkCmpKindVariable @module
+hi! link BlinkCmpKindFolder @module
+hi! link BlinkCmpKindClass @type
+hi! link BlinkCmpKindOperator @operator
+hi! link BlinkCmpKindText @string
+
+hi! link LineNr Normal
+hi EndOfBuffer guifg=bg guibg=bg
+hi! link BufferLineFill Normal
+"hi FoldColumn guibg=bg
+hi! link FoldColumn Normal
+hi! link SignColumn Normal
+hi VertSplit guibg=#302d38 guifg=#302d38
+
 " Remove functions
 delf <sid>hi
 delf <sid>gui

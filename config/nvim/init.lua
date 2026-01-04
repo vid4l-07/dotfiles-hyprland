@@ -1,6 +1,15 @@
 ------------------------------------------------------------
 --- Instalar Lazy; Los plugins se gestionan con :Lazy
 ------------------------------------------------------------
+---
+
+vim.opt.termguicolors = true
+
+vim.g.molokai_original = 0
+
+vim.cmd("source $HOME/.config/nvim/colors/theme.vim")  -- Tema (se cambia desde script)
+
+
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
@@ -137,9 +146,9 @@ require("lazy").setup({
   {"stevearc/oil.nvim"},
 
   --themes
-  {"catppuccin/nvim"},
-  {"AlexvZyl/nordic.nvim"},
-  {"rebelot/kanagawa.nvim"},
+  -- {"catppuccin/nvim"},
+  -- {"AlexvZyl/nordic.nvim"},
+  -- {"rebelot/kanagawa.nvim"},
 
   -- Lualine
   {'nvim-lualine/lualine.nvim', dependencies = { 'nvim-tree/nvim-web-devicons' }},
@@ -285,30 +294,26 @@ require "nvim-treesitter.configs".setup({
 ------------------------------------------------------------
 -- Tema y colores
 ------------------------------------------------------------
-vim.opt.termguicolors = true 
 
-vim.g.molokai_original = 0
-
--- Tema (se cambia desde script)
-vim.cmd("source $HOME/.config/nvim/theme.vim")
 
 -- Colores Blink	:Inspect para ver los highlights de lo seleccionado
-vim.cmd([[ 
-	"hi Normal guibg=NONE ctermbg=NONE
+-- vim.cmd([[ 
+-- 	"hi Normal guibg=NONE ctermbg=NONE
+--
+-- 	hi! link BlinkCmpKindFunction @function
+-- 	hi! link BlinkCmpKindConstructor @constructor
+-- 	hi! link BlinkCmpKindVariable @module
+-- 	hi! link BlinkCmpKindFolder @module
+-- 	hi! link BlinkCmpKindClass @type
+-- 	hi! link BlinkCmpKindOperator @operator
+-- 	hi! link BlinkCmpKindText @string
+--
+-- 	hi! link LineNr Normal
+-- 	hi EndOfBuffer guifg=bg guibg=bg
+-- 	hi! link BufferLineFill Normal
+-- 	"hi FoldColumn guibg=bg
+-- 	hi! link FoldColumn Normal
+-- 	hi! link SignColumn Normal
+-- 	hi VertSplit guibg=#302d38 guifg=#302d38
+-- ]])
 
-	hi! link BlinkCmpKindFunction @function
-	hi! link BlinkCmpKindConstructor @constructor
-	hi! link BlinkCmpKindVariable @module
-	hi! link BlinkCmpKindFolder @module
-	hi! link BlinkCmpKindClass @type
-	hi! link BlinkCmpKindOperator @operator
-	hi! link BlinkCmpKindText @string
-
-	hi! link LineNr Normal
-	hi EndOfBuffer guifg=bg guibg=bg
-	hi! link BufferLineFill Normal
-	"hi FoldColumn guibg=bg
-	hi! link FoldColumn Normal
-	hi! link SignColumn Normal
-	hi VertSplit guibg=#302d38 guifg=#302d38
-]])

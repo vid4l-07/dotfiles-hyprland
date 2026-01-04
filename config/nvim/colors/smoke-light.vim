@@ -8,9 +8,9 @@
 "    execute "silent !/bin/sh ".g:base16_shell_path."/smoke.".&background.".sh"
 "  endif
 "endif
-"#
+
 " GUI color definitions
-let s:gui00 = "f2f1f5" " fondo del archivo
+let s:gui00 = "f2f1f4" " fondo del archivo
 let s:gui01 = "e0e0e6" " fondo normal statusline y fondo numeros izq
 let s:gui02 = "c8c3d0" " numeros izquierda
 let s:gui03 = "b8b4c4" " comentarios
@@ -58,7 +58,7 @@ endif
 " Theme setup
 hi clear
 syntax reset
-let g:colors_name = "smoke"
+let g:colors_name = "smoke-light"
 
 " Highlighting function
 fun <sid>hi(group, guifg, guibg, ctermfg, ctermbg, attr, guisp)
@@ -299,6 +299,8 @@ call <sid>hi("BufferLineTab",        s:gui05, s:gui00, s:cterm05, s:cterm00, "",
 call <sid>hi("BufferLineFill",        s:gui05, s:gui00, s:cterm05, s:cterm00, "", "")
 call <sid>hi("BufferLineTab",        s:gui05, s:gui00, s:cterm05, s:cterm00, "", "")
 
+" extras
+
 hi! link @variable Text
 "hi! link BlinkCmpScrollBarThumb Normal
 "hi! link BlinkCmpScrollBarGutter Normal
@@ -346,6 +348,22 @@ hi TermCursorNC ctermfg=245    ctermbg=67     guifg=s:gui05 guibg=s:gui0C guisp=
   let g:terminal_color_14 = "#" . s:gui0E
   let g:terminal_color_15 = "#" . s:gui01
 endif
+
+hi! link BlinkCmpKindFunction @function
+hi! link BlinkCmpKindConstructor @constructor
+hi! link BlinkCmpKindVariable @module
+hi! link BlinkCmpKindFolder @module
+hi! link BlinkCmpKindClass @type
+hi! link BlinkCmpKindOperator @operator
+hi! link BlinkCmpKindText @string
+
+hi! link LineNr Normal
+hi EndOfBuffer guifg=bg guibg=bg
+hi! link BufferLineFill Normal
+"hi FoldColumn guibg=bg
+hi! link FoldColumn Normal
+hi! link SignColumn Normal
+hi VertSplit guibg=#302d38 guifg=#302d38
 
 " Remove functions
 delf <sid>hi
