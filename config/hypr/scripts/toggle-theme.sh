@@ -32,7 +32,7 @@ vimthemes[light]='smoke-light'
 
 declare -A wallpapers
 wallpapers[black]='$HOME/.config/wallpapers/1.jpeg'  #'$HOME/.config/wallpapers/8.jpg' #$HOME/.config/wallpapers/15.jpg
-wallpapers[light]='$HOME/.config/wallpapers/10.png'
+wallpapers[light]='$HOME/.config/wallpapers/11.jpg'
 
 echo "colorscheme ${vimthemes[$theme]}" > $vim
 

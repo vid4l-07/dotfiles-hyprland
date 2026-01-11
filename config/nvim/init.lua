@@ -1,15 +1,13 @@
+-- comprobar si usa windows
+if vim.fn.has("win32") == 1 then
+	win = true
+else
+	win = false
+end
+
 ------------------------------------------------------------
 --- Instalar Lazy; Los plugins se gestionan con :Lazy
 ------------------------------------------------------------
----
-
-vim.opt.termguicolors = true
-
-vim.g.molokai_original = 0
-
-vim.cmd("source $HOME/.config/nvim/colors/theme.vim")  -- Tema (se cambia desde script)
-
-
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
@@ -27,7 +25,11 @@ vim.opt.rtp:prepend(lazypath)
 vim.o.winborder = "solid"
 vim.o.winblend = 0 
 vim.opt.clipboard = "unnamedplus"
-vim.opt.shell = "/bin/zsh"
+if win then  -- si usa windows: shell = powershell ; si no: shell = bash
+  vim.opt.shell = "powershell"
+else
+  vim.opt.shell = "/bin/bash"
+end
 vim.cmd("syntax on")
 vim.opt.tabstop = 4
 vim.opt.tabstop = 4
@@ -55,15 +57,14 @@ function _G.RunFile()
   local cmd = nil
 
   if ext == "py" then
-    cmd = "python3 " .. file
-  elseif ext == "c" then
-  elseif ext == "lua" then
-    cmd = "lua " .. file
+    cmd = "python " .. file
+  elseif ext == "sh" then
+    cmd = "bash " .. file
   else
     print("Tipo de archivo no soportado: " .. ext)
     return
   end
-  vim.cmd("botright split | term " .. cmd)
+  vim.cmd("terminal " .. cmd)
 end
 
 vim.api.nvim_create_user_command("RunFile", RunFile, {})
@@ -294,7 +295,11 @@ require "nvim-treesitter.configs".setup({
 ------------------------------------------------------------
 -- Tema y colores
 ------------------------------------------------------------
+vim.opt.termguicolors = true
 
+vim.g.molokai_original = 0
+
+vim.cmd("source $HOME/.config/nvim/colors/theme.vim")  -- Tema (se cambia desde script)
 
 -- Colores Blink	:Inspect para ver los highlights de lo seleccionado
 -- vim.cmd([[ 
