@@ -1,0 +1,30 @@
+![2025-02-12_16-35](https://github.com/user-attachments/assets/bb66e42d-7770-4c9a-840d-cefadc617c9c)
+
+
+![2025-02-12_16-35](https://github.com/user-attachments/assets/ba993930-eb2e-4bf8-8426-419cfb4c389e)
+
+
+![2025-02-12_16-59](https://github.com/user-attachments/assets/11045cd1-bfbe-4125-a685-4675af103ce4)
+
+
+![2025-02-12_17-40](https://github.com/user-attachments/assets/96e16e76-eb88-4582-ae61-2ba49196496b)
+
+
+![2025-02-12_17-27](https://github.com/user-attachments/assets/e08e0c47-da2e-436e-b02c-c781a96e45de)
+
+
+<a id="installation"></a>  
+<img src="https://github.com/user-attachments/assets/7e1e2fa0-ab50-4901-a024-fe731fb44ab3" width="200"/>
+---
+
+```
+ git clone https://github.com/sofijacom/dotfiles-fastfetch.git ~/.config/fastfetch
+```
+
+> [!NOTE]
+> _To display images in `*.png` format, set_:
+
+```
+sudo pacman -Syu imagemagick
+```
+
