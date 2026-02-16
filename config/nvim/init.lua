@@ -99,9 +99,6 @@ map("n", "<C-j>", "3<C-e>", opts)
 -- Enviar cursor al centro
 map("n", "<leader>z", ":call cursor(line('w0') + (winheight(0)/2), col('.'))<CR>", { silent = true })
 
--- Nueva lina en insertar
-map('i', '<S-CR>', '<Esc>o')
-
 -- Final de linea en insertar
 map('i', '<S-Tab>', '<Esc>A')
 
@@ -132,6 +129,7 @@ vim.api.nvim_set_keymap(
   'copilot#Accept("<CR>")',
   { expr = true, silent = true }
 )
+
 ------------------------------------------------------------
 --- Plugins
 ------------------------------------------------------------
@@ -310,7 +308,7 @@ vim.g.molokai_original = 0
 
 vim.cmd("source $HOME/.config/nvim/colors/theme.vim")  -- Tema (se cambia desde script)
 
-vim.cmd("hi FoldColumn guibg=bg guifg=bg")
+-- vim.cmd("hi FoldColumn guibg=bg guifg=bg")
 
 -- Colores Blink	:Inspect para ver los highlights de lo seleccionado
 -- vim.cmd([[ 

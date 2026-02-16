@@ -303,6 +303,7 @@ hi! link @variable Text
 "hi! link BlinkCmpScrollBarThumb Normal
 "hi! link BlinkCmpScrollBarGutter Normal
 
+hi FoldColumn guibg=bg guifg=bg
 hi! link BlinkCmpMenuSelection Search
 
 hi! link BlinkCmpDoc Pmenu
@@ -359,7 +360,7 @@ hi! link LineNr Normal
 hi EndOfBuffer guifg=bg guibg=bg
 hi! link BufferLineFill Normal
 "hi FoldColumn guibg=bg
-hi! link FoldColumn Normal
+hi FoldColumn guifg=bg guibg=bg
 hi! link SignColumn Normal
 hi VertSplit guibg=#302d38 guifg=#302d38
 

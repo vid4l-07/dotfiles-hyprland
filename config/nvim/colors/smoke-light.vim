@@ -326,7 +326,6 @@ hi! link NormalFloat Pmenu
 "hi! link BufferLineTab Normal
 hi! link BufferLineFill BufferLineInfo
 
-
 " neovim terminal
 if has('nvim')
 hi! link TermCursor Cursor
@@ -360,8 +359,8 @@ hi! link BlinkCmpKindText @string
 hi! link LineNr Normal
 hi EndOfBuffer guifg=bg guibg=bg
 hi! link BufferLineFill Normal
-"hi FoldColumn guibg=bg
-hi! link FoldColumn Normal
+hi FoldColumn guifg=bg guibg=bg
+
 hi! link SignColumn Normal
 hi VertSplit guibg=#302d38 guifg=#302d38
 
