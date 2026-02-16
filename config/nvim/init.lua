@@ -1,10 +1,3 @@
--- comprobar si usa windows
-if vim.fn.has("win32") == 1 then
-	win = true
-else
-	win = false
-end
-
 ------------------------------------------------------------
 --- Instalar Lazy; Los plugins se gestionan con :Lazy
 ------------------------------------------------------------
@@ -21,15 +14,16 @@ vim.opt.rtp:prepend(lazypath)
 ------------------------------------------------------------
 -- Opciones generales
 ------------------------------------------------------------
+if vim.fn.has("win32") == 1 then  -- si usa windows: shell = powershell ; si no: shell = bash
+	vim.opt.shell = "powershell"
+else
+	vim.opt.shell = "/bin/bash"
+end
+
 -- vim.o.winborder = "rounded"
 vim.o.winborder = "solid"
 vim.o.winblend = 0 
 vim.opt.clipboard = "unnamedplus"
-if win then  -- si usa windows: shell = powershell ; si no: shell = bash
-  vim.opt.shell = "powershell"
-else
-  vim.opt.shell = "/bin/bash"
-end
 vim.cmd("syntax on")
 vim.opt.tabstop = 4
 vim.opt.tabstop = 4
@@ -45,6 +39,8 @@ vim.cmd("filetype plugin indent on")
 vim.opt.termguicolors = true
 vim.opt.showmode = false
 vim.opt.foldcolumn = "2"
+vim.opt.wrap = false  -- no hacer salto de linea al llegar al final
+vim.opt.formatoptions:remove {'r', 'o'}   -- no comentar al dar al enter si estabas en una linea comentada
 
 ------------------------------------------------------------
 -- Funciones
@@ -261,13 +257,9 @@ require('mason-lspconfig').setup({
   ensure_installed = {
     "pyright",
     "bashls",
-    "intelephense",
     "html",
     "cssls",
     "clangd",
-    "lua_ls",
-    "jdtls",
-    "omnisharp",
   },
   automatic_installation = true,
 })
@@ -289,8 +281,25 @@ require "nvim-treesitter.configs".setup({
 	modules = {},
 	sync_install = true,
 	ignore_install = {},
-	auto_install = true,
+	auto_install = false,  -- viene bien dejarlo en true los primeros dias para que vaya instalando lo necesario
 })
+
+-- Plegar funciones
+vim.cmd("set foldmethod=expr")
+vim.cmd("set foldexpr=nvim_treesitter#foldexpr()")
+vim.cmd("set foldlevel=99")
+
+vim.opt.foldtext = "v:lua.MyFoldText()"
+
+function _G.MyFoldText()
+	local line = vim.fn.getline(vim.v.foldstart)
+	line = line:gsub("{%s*$", "")
+	return "" .. line
+end
+
+vim.defer_fn(function()
+	vim.cmd("normal! zx")
+end, 0)
 
 ------------------------------------------------------------
 -- Tema y colores
@@ -300,6 +309,8 @@ vim.opt.termguicolors = true
 vim.g.molokai_original = 0
 
 vim.cmd("source $HOME/.config/nvim/colors/theme.vim")  -- Tema (se cambia desde script)
+
+vim.cmd("hi FoldColumn guibg=bg guifg=bg")
 
 -- Colores Blink	:Inspect para ver los highlights de lo seleccionado
 -- vim.cmd([[ 
