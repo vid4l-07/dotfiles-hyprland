@@ -12,8 +12,6 @@ https://github.com/user-attachments/assets/6d3a99f4-51a7-44c4-9789-1adc3a56ceca
 
 </div>
 
----
-
 ## Información
 - WM: Hyprland
 - Bar: waybar
@@ -36,6 +34,8 @@ https://github.com/user-attachments/assets/6d3a99f4-51a7-44c4-9789-1adc3a56ceca
 <img src=".github/colores-light.png" width="400">
 
 - Archivo de colores en ```config/hypr/scripts/colors.env-all```
+
+---
 
 ## Instalación
 1. Crear backups
