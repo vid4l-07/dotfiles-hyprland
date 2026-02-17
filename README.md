@@ -29,11 +29,11 @@ https://github.com/user-attachments/assets/6d3a99f4-51a7-44c4-9789-1adc3a56ceca
 
 - **Smoke dark**
 
-![Dark pallete](.github/colores-dark.png)
+<img src=".github/colores-dark.png" width="400">
 
 - **Smoke light**
 
-![Dark pallete](.github/colores-light.png)
+<img src=".github/colores-light.png" width="400">
 
 - Archivo de colores en ```config/hypr/scripts/colors.env-all```
 
