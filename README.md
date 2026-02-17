@@ -8,7 +8,7 @@ Mi configuracion de Hyprland — minimalista, rápida y altamente personalizable
 
 <div align="center">
 
-https://github.com/user-attachments/assets/1820bb72-ef1e-461a-8bff-87f3987b2db4
+https://github.com/user-attachments/assets/5441a8aa-1b3b-45ae-b679-7fc5474403a5
 
 </div>
 
