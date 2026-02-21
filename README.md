@@ -4,21 +4,20 @@
 
 My easy and minimal dotfiles for hyprland
 
-Hope it can help 
-
-<p style="color: #e4bd66;">
-    ❗If something does not work, please 
-<a href="https://github.com/Firstp1ck/Hyprland_simple-minimal_Setup/issues/new" rel="noopener noreferrer" style="color: rgb(123, 130, 255); text-decoration: underline;">open an issue</a>
+<p style="max-width: 500px;">
+❗If something does not work, please 
+<a href="https://github.com/Firstp1ck/Hyprland_simple-minimal_Setup/issues/new" rel="noopener noreferrer">open an issue</a>
  on this repository or E-Mail me via
-<a href="mailto:h.vidal7@proton.me"> h.vidal7@proton.me </a>❗<br>
+<a href="mailto:h.vidal7@proton.me"> h.vidal7@proton.me </a>❗
+
 I am always open to suggestions and feedback
-  </p>
+</p>
 
 <br>
   <a href="#Screenshots"><kbd> <br> Screenshots <br> </kbd></a>&ensp;&ensp;
   <a href="#Apps"><kbd> <br> Apps <br> </kbd></a>&ensp;&ensp;
   <a href="#Theme"><kbd> <br> Theme <br> </kbd></a>&ensp;&ensp;
-  <a href="#Installation"><kbd> <br> Installation <br> <br></kbd></a>&ensp;&ensp;
+  <a href="#Installation"><kbd> <br> Installation <br> </kbd></a>&ensp;&ensp;
 
 </div>
 
@@ -77,4 +76,3 @@ cd dotfiles
 ```bash
 mv config/* wallpapers $HOME/.config
 ```
-
