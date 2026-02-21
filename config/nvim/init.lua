@@ -41,6 +41,10 @@ vim.opt.showmode = false
 vim.opt.foldcolumn = "2"
 vim.opt.wrap = false  -- no hacer salto de linea al llegar al final
 vim.opt.formatoptions:remove {'r', 'o'}   -- no comentar al dar al enter si estabas en una linea comentada
+vim.opt.listchars = {
+  trail = " ",  -- Espacios al final de línea
+  tab = "> ",
+}
 
 ------------------------------------------------------------
 -- Funciones
