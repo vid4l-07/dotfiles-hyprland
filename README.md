@@ -7,7 +7,8 @@ My easy and minimal dotfiles for hyprland
 <p style="max-width: 500px;">
 ❗If something does not work, please 
 <a href="https://github.com/Firstp1ck/Hyprland_simple-minimal_Setup/issues/new" rel="noopener noreferrer">open an issue</a>
- on this repository or E-Mail me via
+ on this repository 
+ or E-Mail me via
 <a href="mailto:h.vidal7@proton.me"> h.vidal7@proton.me </a>❗
 
 I am always open to suggestions and feedback
