@@ -2,11 +2,13 @@
 
 # Hyprland Dotfiles
 
+---
+
 My easy and minimal dotfiles for hyprland
 
 <p style="max-width: 500px;">
 ❗If something does not work,
-<a href="https://github.com/Firstp1ck/Hyprland_simple-minimal_Setup/issues/new" rel="noopener noreferrer">open an issue</a>
+<a href="https://github.com/vid4l-07/dotfiles-hyprland/issues/new" rel="noopener noreferrer">open an issue</a>
  on this repository or E-Mail me via
 <a href="mailto:h.vidal7@proton.me"> h.vidal7@proton.me </a>❗
 
