@@ -1,6 +1,6 @@
-# Hyprland Dotfiles
-
 <div align="center">
+
+# Hyprland Dotfiles
 
 My easy and minimal dotfiles for hyprland
 
