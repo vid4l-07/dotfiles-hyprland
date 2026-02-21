@@ -2,8 +2,6 @@
 
 # Hyprland Dotfiles
 
----
-
 My easy and minimal dotfiles for hyprland
 
 <p style="max-width: 500px;">
