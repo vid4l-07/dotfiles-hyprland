@@ -12,8 +12,6 @@ My easy and minimal dotfiles for hyprland
 
 </div>
 
----
-
 ## Screenshots
 
 <div align="center">
@@ -34,8 +32,6 @@ https://github.com/user-attachments/assets/5441a8aa-1b3b-45ae-b679-7fc5474403a5
 | Fetch| fastfetch|
 | Theme| smoke (made by me)|
 
----
-
 ## Theme
 
 - **Smoke dark**
@@ -48,8 +44,6 @@ https://github.com/user-attachments/assets/5441a8aa-1b3b-45ae-b679-7fc5474403a5
 
 - Color file: ```config/hypr/scripts/colors.env-all```
 - Vim theme: ```config/nvim/colors/smoke*.vim```
-
----
 
 ## Installation
 1. Create backups
@@ -67,6 +61,8 @@ cd dotfiles
 ```bash
 mv config/* wallpapers $HOME/.config
 ```
+
+---
 
 ## Contributions
 
