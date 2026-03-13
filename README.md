@@ -12,7 +12,7 @@ My easy and minimal dotfiles for hyprland
 
 </div>
 
-<hr style="height:0.08px; border:none; background-color:#535353;">
+---
 
 ## Screenshots
 
