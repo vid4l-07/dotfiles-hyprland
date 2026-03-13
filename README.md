@@ -4,15 +4,6 @@
 
 My easy and minimal dotfiles for hyprland
 
-<p style="max-width: 500px;">
-❗If something does not work,
-<a href="https://github.com/vid4l-07/dotfiles-hyprland/issues/new" rel="noopener noreferrer">open an issue</a>
- on this repository or E-Mail me via
-<a href="mailto:h.vidal7@proton.me"> h.vidal7@proton.me </a>❗
-
-I am always open to suggestions and feedback
-</p>
-
 <br>
   <a href="#Screenshots"><kbd> <br> Screenshots <br> </kbd></a>&ensp;&ensp;
   <a href="#Apps"><kbd> <br> Apps <br> </kbd></a>&ensp;&ensp;
@@ -76,3 +67,14 @@ cd dotfiles
 ```bash
 mv config/* wallpapers $HOME/.config
 ```
+
+## Contributions
+
+<p style="max-width: 500px;">
+❗If something does not work,
+<a href="https://github.com/vid4l-07/dotfiles-hyprland/issues/new" rel="noopener noreferrer">open an issue</a>
+ on this repository or E-Mail me via
+<a href="mailto:h.vidal7@proton.me"> h.vidal7@proton.me </a>❗
+
+I am always open to suggestions and feedback
+</p>
