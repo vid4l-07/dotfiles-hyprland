@@ -14,6 +14,7 @@ function fish_user_key_bindings
 	bind -M insert ctrl-h fzf-history
 
 	bind -M insert ctrl-o yazi # gestor de archivos
+	bind -M insert \e\x7f backward-kill-word
 end
 
 

@@ -71,10 +71,11 @@
 	},
 
 	"custom/target":{
-		"format": " {text}",
+		"format": "{text}",
 		"tooltip": false,
 		"exec": "/bin/cat $HOME/.config/waybar/scripts/target.txt",
 		"interval": 5,
+		"on-click": "echo -n \"$(/bin/cat $HOME/.config/waybar/scripts/target.txt)\" | wl-copy",
 	},
 	"clock": {
 		"interval": 60,
