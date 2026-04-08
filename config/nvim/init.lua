@@ -134,6 +134,10 @@ vim.api.nvim_set_keymap(
   { expr = true, silent = true }
 )
 
+-- Scroll horizontal
+vim.keymap.set("n", "<C-ScrollWheelUp>", "8zh")
+vim.keymap.set("n", "<C-ScrollWheelDown>", "8zl")
+
 ------------------------------------------------------------
 --- Plugins
 ------------------------------------------------------------
