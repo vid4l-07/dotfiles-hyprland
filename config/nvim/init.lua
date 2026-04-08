@@ -1,7 +1,6 @@
 ------------------------------------------------------------
---- Instalar Lazy; Los plugins se gestionan con :Lazy
+-- Plugins
 ------------------------------------------------------------
--- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
@@ -11,10 +10,13 @@ if not vim.loop.fs_stat(lazypath) then
   })
 end
 vim.opt.rtp:prepend(lazypath)
+
+require("lazy").setup(require("lua.plugins.plugins")) -- Instalar plugins
+
 ------------------------------------------------------------
 -- Opciones generales
 ------------------------------------------------------------
-if vim.fn.has("win32") == 1 then  -- si usa windows: shell = powershell ; si no: shell = bash
+if vim.fn.has("win32") == 1 then  -- windows -> powershell ; linux -> bash
 	vim.opt.shell = "powershell"
 else
 	vim.opt.shell = "/bin/bash"
@@ -25,7 +27,6 @@ vim.o.winborder = "solid"
 vim.o.winblend = 0 
 vim.opt.clipboard = "unnamedplus"
 vim.cmd("syntax on")
-vim.opt.tabstop = 4
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
 vim.cmd("filetype on")
@@ -39,11 +40,10 @@ vim.cmd("filetype plugin indent on")
 vim.opt.termguicolors = true
 vim.opt.showmode = false
 vim.opt.foldcolumn = "2"
-vim.opt.wrap = false  -- no hacer salto de linea al llegar al final
-vim.opt.formatoptions:remove {'r', 'o'}   -- no comentar al dar al enter si estabas en una linea comentada
+vim.opt.wrap = false  -- no hacer salto de linea al llegar al final de la pantalla
 vim.opt.listchars = {
   trail = " ",  -- Espacios al final de línea
-  tab = "> ",
+  tab = "> ",  -- tabs
 }
 
 ------------------------------------------------------------
@@ -126,186 +126,11 @@ map("n", "<leader>r", ":RunFile<CR>", opts)
 -- Copilot
 map("n", "<leader>i", ":lua CopilotToggle()<CR>", opts)
 
-	-- Aceptar sugerencia con Ctrl+l si no hay menú visible
-vim.api.nvim_set_keymap(
-  "i",
-  "<C-l>",
-  'copilot#Accept("<CR>")',
-  { expr = true, silent = true }
-)
+vim.api.nvim_set_keymap( "i", "<C-l>", 'copilot#Accept("<CR>")', { expr = true, silent = true })  -- Aceptar sugerencia con Ctrl+l
 
 -- Scroll horizontal
-vim.keymap.set("n", "<C-ScrollWheelUp>", "8zh")
-vim.keymap.set("n", "<C-ScrollWheelDown>", "8zl")
-
-------------------------------------------------------------
---- Plugins
-------------------------------------------------------------
--- Instalar plugins
-require("lazy").setup({
-  --fzf (archivos) (instalar el paquete fzf desde la terminal)
-  {"ibhagwan/fzf-lua"},
-  --Oil
-  {"stevearc/oil.nvim"},
-
-  --themes
-  -- {"catppuccin/nvim"},
-  -- {"AlexvZyl/nordic.nvim"},
-  -- {"rebelot/kanagawa.nvim"},
-
-  -- Lualine
-  {'nvim-lualine/lualine.nvim', dependencies = { 'nvim-tree/nvim-web-devicons' }},
-  -- Bufferline
-  {'akinsho/bufferline.nvim', version = "*", dependencies = 'nvim-tree/nvim-web-devicons'},
-
-  -- Syntax y completado
-  { 'nvim-treesitter/nvim-treesitter' },
-  { 'williamboman/mason.nvim', config = true }, -- :Mason; I para instalar y U para actualizar
-  { 'williamboman/mason-lspconfig.nvim', config = true },
-  { "neovim/nvim-lspconfig" }, 
-
-  { "Saghen/blink.cmp", version = "v1.6.0"},
-
-  { "jiangmiao/auto-pairs" },
-  { "alvan/vim-closetag" },
-  { "ap/vim-css-color" },
-
-  -- IA
-  { "github/copilot.vim" }, -- :Copilot setup
-})
-
-------------------------------------------------------------
--- Config de plugins
-------------------------------------------------------------
-
--- lualine
-require('config.lualine')
--- bufferline
-require("bufferline").setup({
-  options = {
-    show_buffer_icons = false,
-    show_buffer_close_icons = true,
-    show_close_icon = false,
-  }
-})
-
--- blink.cmp
-require("blink.cmp").setup({
-	cmdline = { enabled = true },
-	completion = { 
-		menu = {
-			draw = { columns = { { "label", gap = 3 }, { "kind_icon" }  } },
-		},
-		list = {
-			selection = { preselect = false }, -- selecciona el primer elemento auto
-		},
-		documentation = { auto_show = true, auto_show_delay_ms = 1000 },
-		ghost_text = { enabled = false },
-		accept = {
-			auto_brackets = { enabled = true },
-		},
-	},
-	sources = {
-		default = { 'lsp', 'buffer', 'snippets', 'path' },
-	},
-	keymap = {
-		-- ['<Tab>'] = { 'select', 'fallback' },
-		["<Tab>"] = { "select_next", "fallback" },     -- Tab = siguiente sugerencia
-		-- ["<S-Tab>"] = { "select_prev", "fallback" },   -- Shift+Tab = anterior
-		["<C-CR>"] = { "accept", "fallback" }, -- Aceptar con ctrl enter
-
-		-- ["<S-CR>"] = { "select_next", "fallback" },     -- Sift+Enter = siguiente sugerencia
-		-- ["<C-CR>"] = { "select_prev", "fallback" },   -- Ctrl+Enter = anterior
-		-- ["<Tab>"] = { "accept", "fallback" }, -- Aceptar con Tab
-
-
-
-		-- ["<Up>"] = { "fallback" }, -- deshabilitar flechas
-		-- ["<Down>"] = { "fallback" },
-	},
-	fuzzy = {
-		implementation = "prefer_rust_with_warning",
-		prebuilt_binaries = { download = true, },
-	},
-})
-
--- fzf
-local fzf = require("fzf-lua")
-fzf.setup({
-	-- "fzf-vim",
-	winopts = {
-		border = "solid",
-		fullscreen = true,
-		preview = {
-			border = "solid",
-			winopts	= {
-				number = false,
-			},
-		},
-	},
-})
--- binds-fzf
-map("n", "<leader>f", fzf.files)
-map("n", "<leader>b", fzf.buffers)
-map("n", "<leader>ls", fzf.lsp_document_symbols) -- navega entre las variables
-map("n", "<leader>ld", fzf.diagnostics_document) -- navega entre errores
-
--- Oil
-require("oil").setup({
-	confirmation = {
-		border = "solid",
-	},
-})
-
--- LSP (Servidor de lenguajes); Mason (instala los servidores)
-require('mason').setup()
-require('mason-lspconfig').setup({
-  ensure_installed = {
-    "pyright",
-    "bashls",
-    "html",
-    "cssls",
-    "clangd",
-  },
-  automatic_installation = true,
-})
-
-local lspconfig = require('lspconfig')
-
--- Mostrar diagnóstico en un popup al mover el cursor sobre la línea
-vim.o.updatetime = 300
-vim.api.nvim_create_autocmd("CursorHold", {
-  callback = function()
-    vim.diagnostic.open_float(nil, { focus = false })
-  end
-})
-
-
---tree-sitter (Resalta sintaxis)
-require "nvim-treesitter.configs".setup({
-	highlight = { enable = true },
-	modules = {},
-	sync_install = true,
-	ignore_install = {},
-	auto_install = false,  -- viene bien dejarlo en true los primeros dias para que vaya instalando lo necesario
-})
-
--- Plegar funciones
-vim.cmd("set foldmethod=expr")
-vim.cmd("set foldexpr=nvim_treesitter#foldexpr()")
-vim.cmd("set foldlevel=99")
-
-vim.opt.foldtext = "v:lua.MyFoldText()"
-
-function _G.MyFoldText()
-	local line = vim.fn.getline(vim.v.foldstart)
-	line = line:gsub("{%s*$", "")
-	return "" .. line
-end
-
-vim.defer_fn(function()
-	vim.cmd("normal! zx")
-end, 0)
+map("n", "<C-ScrollWheelUp>", "8zh")
+map("n", "<C-ScrollWheelDown>", "8zl")
 
 ------------------------------------------------------------
 -- Tema y colores
@@ -315,8 +140,6 @@ vim.opt.termguicolors = true
 vim.g.molokai_original = 0
 
 vim.cmd("source $HOME/.config/nvim/colors/theme.vim")  -- Tema (se cambia desde script)
-
--- vim.cmd("hi FoldColumn guibg=bg guifg=bg")
 
 -- Colores Blink	:Inspect para ver los highlights de lo seleccionado
 -- vim.cmd([[ 
@@ -339,3 +162,4 @@ vim.cmd("source $HOME/.config/nvim/colors/theme.vim")  -- Tema (se cambia desde 
 -- 	hi VertSplit guibg=#302d38 guifg=#302d38
 -- ]])
 
+require("lua.plugins.plugins-conf") -- Configuración de plugins
