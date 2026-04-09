@@ -11,7 +11,7 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup(require("lua.plugins.plugins")) -- Instalar plugins
+require("lazy").setup(require("plugins.plugins")) -- Instalar plugins
 
 ------------------------------------------------------------
 -- Opciones generales
@@ -162,4 +162,4 @@ vim.cmd("source $HOME/.config/nvim/colors/theme.vim")  -- Tema (se cambia desde 
 -- 	hi VertSplit guibg=#302d38 guifg=#302d38
 -- ]])
 
-require("lua.plugins.plugins-conf") -- Configuración de plugins
+require("plugins.plugins-conf") -- Configuración de plugins
