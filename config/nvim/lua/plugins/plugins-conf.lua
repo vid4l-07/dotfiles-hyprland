@@ -86,6 +86,7 @@ require('mason-lspconfig').setup({
     "html",
     "cssls",
     "clangd",
+	"rust_analyzer",
   },
   automatic_installation = true,
 })
