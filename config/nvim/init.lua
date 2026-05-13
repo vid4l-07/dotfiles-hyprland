@@ -1,19 +1,4 @@
 ------------------------------------------------------------
--- Plugins
-------------------------------------------------------------
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system({
-    "git", "clone", "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git",
-    lazypath,
-  })
-end
-vim.opt.rtp:prepend(lazypath)
-
-require("lazy").setup(require("plugins.plugins")) -- Instalar plugins
-
-------------------------------------------------------------
 -- Opciones generales
 ------------------------------------------------------------
 if vim.fn.has("win32") == 1 then  -- windows -> powershell ; linux -> bash
@@ -24,7 +9,6 @@ end
 
 -- vim.o.winborder = "rounded"
 vim.o.winborder = "solid"
-vim.o.winblend = 0 
 vim.opt.clipboard = "unnamedplus"
 vim.cmd("syntax on")
 vim.opt.tabstop = 4
@@ -162,4 +146,5 @@ vim.cmd("source $HOME/.config/nvim/colors/theme.vim")  -- Tema (se cambia desde 
 -- 	hi VertSplit guibg=#302d38 guifg=#302d38
 -- ]])
 
+vim.pack.add(require("plugins.plugins")) -- Instalacion
 require("plugins.plugins-conf") -- Configuración de plugins

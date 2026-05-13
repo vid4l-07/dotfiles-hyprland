@@ -3,33 +3,29 @@
 ------------------------------------------------------------
 return{
   --fzf (archivos) (instalar el paquete fzf desde la terminal)
-  {"ibhagwan/fzf-lua"},
-  --Oil
-  {"stevearc/oil.nvim"},
+  "ibhagwan/fzf-lua",
 
-  --themes
-  -- {"catppuccin/nvim"},
-  -- {"AlexvZyl/nordic.nvim"},
-  -- {"rebelot/kanagawa.nvim"},
+  --Oil
+  "stevearc/oil.nvim",
 
   -- Lualine
-  {"nvim-lualine/lualine.nvim", dependencies = { "nvim-tree/nvim-web-devicons" }},
+  "nvim-lualine/lualine.nvim", "nvim-tree/nvim-web-devicons",
   -- Bufferline
-  {"akinsho/bufferline.nvim", version = "*", dependencies = "nvim-tree/nvim-web-devicons"},
+  "akinsho/bufferline.nvim", "nvim-tree/nvim-web-devicons",
 
   -- Syntax y completado
-  { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
-  { "williamboman/mason.nvim", config = true }, -- :Mason; I para instalar y U para actualizar
-  { "williamboman/mason-lspconfig.nvim", config = true },
-  { "neovim/nvim-lspconfig" }, 
+  "nvim-treesitter/nvim-treesitter",
+  "williamboman/mason.nvim", -- :Mason; I para instalar y U para actualizar
+  "williamboman/mason-lspconfig.nvim",
+  "neovim/nvim-lspconfig", 
 
-  { "Saghen/blink.cmp", version = "v1.6.0"},
+  'saghen/blink.lib', 'saghen/blink.cmp',
 
-  { "windwp/nvim-autopairs", event = "InsertEnter", config = true},
+  "windwp/nvim-autopairs",
 
-  { "alvan/vim-closetag" },
-  { "ap/vim-css-color" },
+  "alvan/vim-closetag",
+  "ap/vim-css-color",
 
   -- IA
-  { "github/copilot.vim" }, -- :Copilot setup
+  "github/copilot.vim", -- :Copilot setup
 }

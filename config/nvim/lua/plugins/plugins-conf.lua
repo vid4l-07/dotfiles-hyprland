@@ -13,14 +13,22 @@ require("bufferline").setup({
 })
 
 -- blink.cmp
-require("blink.cmp").setup({
-	cmdline = { enabled = true },
+local blink = require("blink.cmp")
+blink.build()
+blink.setup({
+	cmdline = { 
+		enabled = true,
+		keymap = {
+			["<Up>"] = { "select_prev", "fallback" },
+			["<Down>"] = { "select_next", "fallback" },
+		},
+	},
 	completion = { 
 		menu = {
-			draw = { columns = { { "label", gap = 3 }, { "kind_icon" }  } },
+			draw = { columns = { { "label", gap = 5 }, { "kind_icon" }  } },
 		},
 		list = {
-			selection = { preselect = false }, -- selecciona el primer elemento auto
+			selection = { preselect = false }, -- selecciona el primer elemento
 		},
 		documentation = { auto_show = true, auto_show_delay_ms = 1000 },
 		ghost_text = { enabled = false },
@@ -32,21 +40,11 @@ require("blink.cmp").setup({
 		default = { 'lsp', 'buffer', 'snippets', 'path' },
 	},
 	keymap = {
-		-- ['<Tab>'] = { 'select', 'fallback' },
 		["<Tab>"] = { "select_next", "fallback" },     -- Tab = siguiente sugerencia
-		-- ["<S-Tab>"] = { "select_prev", "fallback" },   -- Shift+Tab = anterior
 		["<C-CR>"] = { "accept", "fallback" }, -- Aceptar con ctrl enter
-
-		-- ["<S-CR>"] = { "select_next", "fallback" },     -- Sift+Enter = siguiente sugerencia
-		-- ["<C-CR>"] = { "select_prev", "fallback" },   -- Ctrl+Enter = anterior
-		-- ["<Tab>"] = { "accept", "fallback" }, -- Aceptar con Tab
-
-		-- ["<Up>"] = { "fallback" }, -- deshabilitar flechas
-		-- ["<Down>"] = { "fallback" },
 	},
 	fuzzy = {
 		implementation = "prefer_rust_with_warning",
-		prebuilt_binaries = { download = true, },
 	},
 })
 
@@ -76,6 +74,9 @@ require("oil").setup({
 		border = "solid",
 	},
 })
+
+-- autopairs
+require("nvim-autopairs").setup({})
 
 -- LSP (Servidor de lenguajes); Mason (instala los servidores)
 require('mason').setup()
