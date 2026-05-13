@@ -13,19 +13,20 @@ return{
   -- {"rebelot/kanagawa.nvim"},
 
   -- Lualine
-  {'nvim-lualine/lualine.nvim', dependencies = { 'nvim-tree/nvim-web-devicons' }},
+  {"nvim-lualine/lualine.nvim", dependencies = { "nvim-tree/nvim-web-devicons" }},
   -- Bufferline
-  {'akinsho/bufferline.nvim', version = "*", dependencies = 'nvim-tree/nvim-web-devicons'},
+  {"akinsho/bufferline.nvim", version = "*", dependencies = "nvim-tree/nvim-web-devicons"},
 
   -- Syntax y completado
-  { 'nvim-treesitter/nvim-treesitter' },
-  { 'williamboman/mason.nvim', config = true }, -- :Mason; I para instalar y U para actualizar
-  { 'williamboman/mason-lspconfig.nvim', config = true },
+  { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
+  { "williamboman/mason.nvim", config = true }, -- :Mason; I para instalar y U para actualizar
+  { "williamboman/mason-lspconfig.nvim", config = true },
   { "neovim/nvim-lspconfig" }, 
 
   { "Saghen/blink.cmp", version = "v1.6.0"},
 
-  { "jiangmiao/auto-pairs" },
+  { "windwp/nvim-autopairs", event = "InsertEnter", config = true},
+
   { "alvan/vim-closetag" },
   { "ap/vim-css-color" },
 

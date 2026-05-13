@@ -102,12 +102,51 @@ vim.api.nvim_create_autocmd("CursorHold", {
 })
 
 --tree-sitter (Resalta sintaxis)
-require "nvim-treesitter.configs".setup({
-	highlight = { enable = true },
-	modules = {},
-	sync_install = true,
-	ignore_install = {},
-	auto_install = false,  -- viene bien dejarlo en true los primeros dias para que vaya instalando lo necesario
+local nvim_treesitter = require("nvim-treesitter")
+
+local ensure_installed = {
+	"lua",
+	"python",
+	"sh",
+	"cpp",
+	"c",
+	"rust",
+	"css",
+	"html",
+	"js",
+}
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = ensure_installed,
+
+  callback = function(args)
+    local ft = vim.bo[args.buf].filetype
+    local lang = vim.treesitter.language.get_lang(ft)
+    if lang == nil then
+      return
+    end
+
+    -- check if parser is available
+    local is_parser_available = vim.treesitter.language.add(lang)
+    if not is_parser_available then
+      local available_langs = vim.g.ts_available or nvim_treesitter.get_available()
+      if not vim.g.ts_available then
+        vim.g.ts_available = available_langs
+      end
+
+      if vim.tbl_contains(available_langs, lang) then
+        -- install treesitter parsers and queries
+        local install_msg = string.format("Installing parsers and queries for %s", lang)
+        vim.print(install_msg)
+        require("nvim-treesitter").install(lang)
+      end
+    end
+
+    if vim.treesitter.language.add(lang) then
+      -- start treesitter highlighting
+      vim.treesitter.start(args.buf, lang)
+    end
+  end,
 })
 
 -- Plegar funciones
