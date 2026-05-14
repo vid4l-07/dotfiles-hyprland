@@ -119,7 +119,7 @@ local ensure_installed = {
 }
 
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = ensure_installed,
+  pattern = "*", -- auto install activo, para desactivar cambie "*" por ensure_installed
 
   callback = function(args)
     local ft = vim.bo[args.buf].filetype
