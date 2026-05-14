@@ -115,6 +115,7 @@ local ensure_installed = {
 	"css",
 	"html",
 	"js",
+	"jsonc",
 }
 
 vim.api.nvim_create_autocmd("FileType", {

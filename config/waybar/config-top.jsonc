@@ -159,7 +159,8 @@
         "tooltip-format": "{device_alias}",
         "tooltip-format-connected": " {device_enumerate}",
         "tooltip-format-enumerate-connected": "{device_alias}",
-		"on-click": "/bin/bash $HOME/.config/wofi/bluetooth.sh"
+		// "on-click": "/bin/bash $HOME/.config/wofi/bluetooth.sh"
+		"on-click": "hyprctl dispatch exec \"[float; size 800 600; center] kitty sh -c '$HOME/.config/waybar/scripts/bluetui'\""
     },
 	"custom/power": {
 		"format" : "",
