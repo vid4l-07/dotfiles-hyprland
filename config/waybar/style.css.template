@@ -56,6 +56,7 @@ window#waybar {
     /* border-radius: 5px; */
 }
 
+#language,
 #custom-wallpaper,
 #custom-power,
 #window,
@@ -72,6 +73,13 @@ window#waybar {
     padding: 0px 6px;
     /* margin-top: 5px; */
 	/* margin-bottom: 5px; */
+}
+
+#language {
+	color: @txt;
+	padding-right: 12px;
+	border-radius: 10px;
+	margin-right: 10px;
 }
 
 #backlight {
@@ -106,16 +114,13 @@ window#waybar {
 }
 
 #clock {
-    /* color: @orange; */
     color: @fg;
     border-radius: 10px 10px 10px 10px;
-	/* margin-left: 3px; */
-	margin-right: 6px;
+	/* margin-right: 6px; */
     border-right: 0px;
 }
 
 #network {
-    /* color: @yellow; */
     color: @fg;
     border-radius: 10px 0px 0px 10px;
     border-left: 0px;
@@ -123,14 +128,12 @@ window#waybar {
 }
 
 #bluetooth {
-    /* color: @blue; */
     color: @fg;
     border-radius: 0px 10px 10px 0px;
     margin-right: 10px
 } 
 
 #pulseaudio {
-    /* color: @blue; */
     color: @fg;
 	border-radius: 10px;
     border-left: 0px;
@@ -138,7 +141,6 @@ window#waybar {
 }
 
 #battery {
-    /* color: @green; */
     color: @fg;
     border-radius: 10px;
     /* margin-right: 10px; */
