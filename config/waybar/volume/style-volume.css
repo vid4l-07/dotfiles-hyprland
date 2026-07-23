@@ -38,7 +38,7 @@ window#waybar {
 }
 
 #pulseaudio-slider trough {
-    min-height: 3px;
+    min-height: 2px;
     min-width: 100px;
     border-radius: 5px;
     background-color: @bg;

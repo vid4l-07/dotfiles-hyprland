@@ -9,17 +9,14 @@ end
 
 -- vim.o.winborder = "rounded"
 vim.o.winborder = "solid"
-vim.opt.clipboard = "unnamedplus"
 vim.cmd("syntax on")
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
-vim.cmd("filetype on")
 vim.opt.ruler = true
 vim.opt.mouse = "a"
 vim.opt.list = true
 vim.opt.number = true
 vim.opt.relativenumber = true
-vim.opt.encoding = "UTF-8"
 vim.cmd("filetype plugin indent on")
 vim.opt.termguicolors = true
 vim.opt.showmode = false
@@ -116,6 +113,9 @@ vim.api.nvim_set_keymap( "i", "<C-l>", 'copilot#Accept("<CR>")', { expr = true, 
 map("n", "<C-ScrollWheelUp>", "8zh")
 map("n", "<C-ScrollWheelDown>", "8zl")
 
+-- Portapapeles
+vim.keymap.set("v", "<C-c>", '"+y', { desc = "Copiar al portapapeles" }) 
+
 ------------------------------------------------------------
 -- Tema y colores
 ------------------------------------------------------------
@@ -125,26 +125,7 @@ vim.g.molokai_original = 0
 
 vim.cmd("source $HOME/.config/nvim/colors/theme.vim")  -- Tema (se cambia desde script)
 
--- Colores Blink	:Inspect para ver los highlights de lo seleccionado
--- vim.cmd([[ 
--- 	"hi Normal guibg=NONE ctermbg=NONE
---
--- 	hi! link BlinkCmpKindFunction @function
--- 	hi! link BlinkCmpKindConstructor @constructor
--- 	hi! link BlinkCmpKindVariable @module
--- 	hi! link BlinkCmpKindFolder @module
--- 	hi! link BlinkCmpKindClass @type
--- 	hi! link BlinkCmpKindOperator @operator
--- 	hi! link BlinkCmpKindText @string
---
--- 	hi! link LineNr Normal
--- 	hi EndOfBuffer guifg=bg guibg=bg
--- 	hi! link BufferLineFill Normal
--- 	"hi FoldColumn guibg=bg
--- 	hi! link FoldColumn Normal
--- 	hi! link SignColumn Normal
--- 	hi VertSplit guibg=#302d38 guifg=#302d38
--- ]])
+-- Colores -> :Inspect para ver los highlights de lo seleccionado
 
 vim.pack.add(require("plugins.plugins")) -- Instalacion
 require("plugins.plugins-conf") -- Configuración de plugins

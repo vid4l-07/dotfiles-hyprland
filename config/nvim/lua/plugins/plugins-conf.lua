@@ -63,11 +63,6 @@ fzf.setup({
 	},
 })
 
--- binds-fzf
-vim.keymap.set("n", "<leader>f", fzf.files)
-vim.keymap.set("n", "<leader>ls", fzf.lsp_document_symbols) -- navega entre las variables
-vim.keymap.set("n", "<leader>ld", fzf.diagnostics_document) -- navega entre errores
-
 -- Oil
 require("oil").setup({
 	confirmation = {
@@ -91,8 +86,6 @@ require('mason-lspconfig').setup({
   },
   automatic_installation = true,
 })
-
-local lspconfig = require('lspconfig')
 
 -- Mostrar diagnóstico en un popup al mover el cursor sobre la línea
 vim.o.updatetime = 300
