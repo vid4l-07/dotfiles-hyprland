@@ -1,0 +1,343 @@
+# ==== Environment
+ 
+export TERM=xterm-256color
+export PATH="$PATH:/home/hvidal/.local/bin:/usr/sbin"
+
+# ==== Options
+ 
+setopt autocd
+setopt interactivecomments
+setopt magicequalsubst
+setopt nonomatch
+setopt notify
+setopt numericglobsort
+setopt promptsubst
+
+# Don't consider / a part of a word
+WORDCHARS=${WORDCHARS//\/}
+
+
+# ==== History
+ 
+HISTFILE="$HOME/.zsh_history"
+HISTSIZE=1000
+SAVEHIST=2000
+
+setopt hist_expire_dups_first
+setopt hist_ignore_dups
+setopt hist_ignore_space
+setopt hist_verify
+
+# ==== Completion
+
+autoload -Uz compinit
+compinit -d "$HOME/.cache/zcompdump"
+
+zstyle ':completion:*:*:*:*:*' menu select
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
+
+
+# ==== Keybindings
+
+# Emacs-style keybindings
+bindkey -v
+
+# History expansion
+bindkey ' ' magic-space
+
+bindkey -M viins '^?' backward-delete-char
+
+# Ctrl + Delete
+bindkey '^[[3;5~' kill-word
+
+# Ctrl + Backspace
+bindkey '^H' backward-kill-word
+
+# Delete
+bindkey '^[[3~' delete-char
+
+# Ctrl + Right
+bindkey '^[[1;5C' forward-word
+
+# Ctrl + Left
+bindkey '^[[1;5D' backward-word
+
+# Ctrl + W/B
+bindkey '^W' forward-word
+bindkey '^B' backward-word
+
+# Page Up / Page Down
+bindkey '^[[5~' beginning-of-buffer-or-history
+bindkey '^[[6~' end-of-buffer-or-history
+
+# Home / End
+bindkey '^[[H' beginning-of-line
+bindkey '^[[F' end-of-line
+
+# Ctrl + J/L
+bindkey '^J' beginning-of-line
+bindkey '^L' end-of-line
+
+# Undo
+bindkey '^U' undo
+
+# Esc + Esc
+bindkey "\e\e" sudo-command-line
+bindkey -M vicmd '\e\e' sudo-command-line
+
+# ==== Prompt
+ 
+# Thin vertical cursor
+echo -ne '\e[5 q'
+
+# ~/.config/bin/ver-colores.sh
+
+# Left prompt
+PROMPT=$'\n%F{blue}愛%f [%n@%m] %F{blue}%~%f\n%F{green}❯%f '
+
+# Right prompt
+RPROMPT=' $(git_prompt_info) '
+
+# Git prompt
+git_prompt_info() {
+    git rev-parse --is-inside-work-tree &>/dev/null || return
+
+	local correct="✔"
+    local branch=""
+    local git_status=""
+    local ahead=0
+    local behind=0
+    local staged
+    local modified
+    local untracked
+    local upstream
+
+    branch=$(git branch --show-current 2>/dev/null)
+    staged=$(git diff --cached --name-only | wc -l)
+    modified=$(git diff --name-only | wc -l)
+    untracked=$(git ls-files --others --exclude-standard | wc -l)
+    upstream=$(git rev-parse --abbrev-ref '@{upstream}' 2>/dev/null)
+
+    # Detached HEAD
+    if [[ -z "$branch" ]]; then
+        branch=$(git rev-parse --short HEAD 2>/dev/null)
+    fi
+
+    # Staged
+    if (( staged > 0 )); then
+        git_status+="%F{yellow}+${staged}%f"
+    fi
+	
+    # Modified
+    if (( modified > 0 )); then
+        git_status+="%F{red}x${modified}$f"
+    fi
+
+    # Untracked
+    if (( untracked > 0 )); then
+        git_status+="%F{blue}?${untracked}%f"
+    fi
+
+	# Clean
+	if [[ -z "$git_status" ]]; then
+		git_status="%F{green}$correct%f"
+	fi
+
+    # Upstream
+    if [[ -n "$upstream" ]]; then
+        ahead=$(git rev-list --count '@{upstream}..HEAD' 2>/dev/null)
+        behind=$(git rev-list --count 'HEAD..@{upstream}' 2>/dev/null)
+    fi
+
+    local result="%F{black}${branch}%f"
+
+    (( ahead > 0 )) && result+=" %F{blue}↑${ahead}%f"
+    (( behind > 0 )) && result+=" %F{red}↓${behind}%f"
+	[[ -n "$git_status" ]] && result+=" ${git_status}"
+
+
+    print -n "$result"
+}
+
+# ==== Syntax highlighting
+ 
+if [[ -f /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]]; then
+    source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+fi
+
+
+# ==== Autosuggestions
+ 
+if [[ -f /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]]; then
+    source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+fi
+
+
+# ==== LS / colors
+# 
+if [[ -x /usr/bin/dircolors ]]; then
+
+    if [[ -r "$HOME/.dircolors" ]]; then
+        eval "$(dircolors -b "$HOME/.dircolors")"
+    else
+        eval "$(dircolors -b)"
+    fi
+
+    alias ls='ls --color=auto'
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
+    alias diff='diff --color=auto'
+    alias ip='ip --color=auto'
+
+    export LESS_TERMCAP_mb=$'\E[1;31m'
+    export LESS_TERMCAP_md=$'\E[1;36m'
+    export LESS_TERMCAP_me=$'\E[0m'
+    export LESS_TERMCAP_so=$'\E[01;33m'
+    export LESS_TERMCAP_se=$'\E[0m'
+    export LESS_TERMCAP_us=$'\E[1;32m'
+    export LESS_TERMCAP_ue=$'\E[0m'
+
+    zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+fi
+
+# export LS_COLORS='rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=30;44:st=37;44:ex=01;32:*.7z=01;31:*.ace=01;31:*.alz=01;31:*.apk=01;31:*.arc=01;31:*.arj=01;31:*.bz=01;31:*.bz2=01;31:*.cab=01;31:*.cpio=01;31:*.crate=01;31:*.deb=01;31:*.drpm=01;31:*.dwm=01;31:*.dz=01;31:*.ear=01;31:*.egg=01;31:*.esd=01;31:*.gz=01;31:*.jar=01;31:*.lha=01;31:*.lrz=01;31:*.lz=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.lzo=01;31:*.pyz=01;31:*.rar=01;31:*.rpm=01;31:*.rz=01;31:*.sar=01;31:*.swm=01;31:*.t7z=01;31:*.tar=01;31:*.taz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tgz=01;31:*.tlz=01;31:*.txz=01;31:*.tz=01;31:*.tzo=01;31:*.tzst=01;31:*.udeb=01;31:*.war=01;31:*.whl=01;31:*.wim=01;31:*.xz=01;31:*.z=01;31:*.zip=01;31:*.zoo=01;31:*.zst=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.jxl=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:'
+export LS_COLORS='rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=30;44:st=37;44:ex=01;32:*.7z=01;31:*.ace=01;31:*.alz=01;31:*.apk=01;31:*.arc=01;31:*.arj=01;31:*.bz=01;31:*.bz2=01;31:*.cab=01;31:*.cpio=01;31:*.crate=01;31:*.deb=01;31:*.drpm=01;31:*.dwm=01;31:*.dz=01;31:*.ear=01;31:*.egg=01;31:*.esd=01;31:*.gz=01;31:*.jar=01;31:*.lha=01;31:*.lrz=01;31:*.lz=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.lzo=01;31:*.pyz=01;31:*.rar=01;31:*.rpm=01;31:*.rz=01;31:*.sar=01;31:*.swm=01;31:*.t7z=01;31:*.tar=01;31:*.taz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tgz=01;31:*.tlz=01;31:*.txz=01;31:*.tz=01;31:*.tzo=01;31:*.tzst=01;31:*.udeb=01;31:*.war=01;31:*.whl=01;31:*.wim=01;31:*.xz=01;31:*.z=01;31:*.zip=01;31:*.zoo=01;31:*.zst=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.jxl=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:'
+
+
+# ==== Aliases
+ 
+alias ll='lsd -l'
+alias la='lsd -a'
+alias lla='lsd -la'
+alias ls='lsd'
+
+alias bat='/bin/bat --paging=never'
+alias cat='/bin/bat --color=auto'
+alias v='/usr/bin/nvim'
+
+# Show the complete history
+alias history="history 0"
+
+
+# ==== Custom functions
+
+# Mount VFAT partition
+mnt-prog() {
+    sudo mount -t vfat \
+        -o uid=1000,gid=1000,umask=022 \
+        /dev/sda4 "$1"
+}
+
+
+# Set current target
+settarget() {
+    local ip_address="$1"
+    local machine_name="$2"
+
+    echo "$ip_address $machine_name" \
+        > "$HOME/.config/waybar/scripts/target.txt"
+}
+
+# Extract ports from an Nmap scan
+extractPorts() {
+    local ports
+    local ip_address
+
+    ports="$(
+        grep -oP '\d{1,5}/open' "$1" |
+        awk '{print $1}' FS='/' |
+        xargs |
+        tr ' ' ','
+    )"
+
+    ip_address="$(
+        grep -oP '\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}' "$1" |
+        sort -u |
+        head -n 1
+    )"
+
+    {
+        echo
+        echo "[*] Extracting information..."
+        echo
+        echo -e "\t[*] IP Address: $ip_address"
+        echo -e "\t[*] Open ports: $ports"
+        echo
+        echo "$ports" |
+            tr -d '\n' |
+            xclip -sel clip
+        echo "[*] Ports copied to clipboard"
+    } > extractPorts.tmp
+
+    cat extractPorts.tmp
+    rm extractPorts.tmp
+}
+
+findcommand() {
+	print -z $(history | awk '{$1=""; sub(/^ /, ""); print}' | fzf)
+}
+
+
+# ==== ZLE widgets
+
+# Change cursor shape depending on vi mode
+zle-keymap-select() {
+    if [[ "$KEYMAP" == "vicmd" || "$1" == "block" ]]; then
+        echo -ne '\e[1 q'
+    elif [[ "$KEYMAP" == "main" ||
+            "$KEYMAP" == "viins" ||
+            -z "$KEYMAP" ||
+            "$1" == "beam" ]]; then
+        echo -ne '\e[5 q'
+    fi
+}
+
+zle -N zle-keymap-select
+
+# Start with beam cursor
+zle-line-init() {
+    zle-keymap-select 'beam'
+}
+
+# ==== sudo-command-line
+ 
+sudo-command-line() {
+
+    [[ -z "$BUFFER" ]] && zle up-history
+
+    if [[ "$BUFFER" == sudo\ * ]]; then
+
+        LBUFFER="${LBUFFER#sudo }"
+
+    elif [[ "$BUFFER" == "$EDITOR"\ * ]]; then
+
+        LBUFFER="${LBUFFER#$EDITOR }"
+        LBUFFER="sudoedit $LBUFFER"
+
+    elif [[ "$BUFFER" == sudoedit\ * ]]; then
+
+        LBUFFER="${LBUFFER#sudoedit }"
+        LBUFFER="$EDITOR $LBUFFER"
+
+    else
+
+        LBUFFER="sudo $LBUFFER"
+
+    fi
+}
+
+zle -N sudo-command-line
+
+
+# ==== Editor
+ 
+export EDITOR="nvim"
+export VISUAL="nvim"
+
+
+# ==== command-not-found
+ 
+if [[ -f /etc/zsh_command_not_found ]]; then
+    source /etc/zsh_command_not_found
+fi
