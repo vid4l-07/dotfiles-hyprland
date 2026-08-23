@@ -28,7 +28,7 @@ https://github.com/user-attachments/assets/5441a8aa-1b3b-45ae-b679-7fc5474403a5
 |Launcher| wofi|
 | Terminal| kitty|
 | Notifications| mako|
-| Shell| fish|
+| Shell| zsh|
 | Fetch| fastfetch|
 | Theme| smoke (made by me)|
 
