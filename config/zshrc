@@ -1,7 +1,7 @@
 # ==== Environment ====
  
 export TERM=xterm-256color
-export PATH="$PATH:/home/hvidal/.local/bin:/usr/sbin"
+export PATH="$PATH:/usr/sbin:/home/hvidal/.local/bin:/home/hvidal/.cargo/bin"
 
 # ==== Options ====
  
@@ -311,6 +311,37 @@ extractPorts() {
 findcommand() {
 	print -z $(history | awk '{$1=""; sub(/^ /, ""); print}' | fzf)
 }
+
+git-help() {
+    echo "Commits should be small, clear, and specific, briefly describing what was changed and avoiding unrelated changes in the same commit."
+	echo "A scope can be added after the commit type to specify which part of the project is affected"
+	echo
+	echo "FORMAT"
+	echo "  <type>[optional scope][optional !]: <description>"
+    echo
+    printf "%-10s %s\n" "Types: "
+    printf "%-10s %s\n" "feat" "A new feature"
+    printf "%-10s %s\n" "fix" "A bug fix"
+	printf "%-10s %s\n" "style" "Formatting or style changes that do not affect the logic"
+    printf "%-10s %s\n" "refactor" "Code changes without changing its behavior"
+    printf "%-10s %s\n" "docs" "Documentation changes"
+    printf "%-10s %s\n" "test" "Adding or modifying tests"
+    printf "%-10s %s\n" "perf" "A performance improvement"
+    printf "%-10s %s\n" "build" "Changes to the build system or dependencies"
+    printf "%-10s %s\n" "ci" "CI/CD changes"
+    printf "%-10s %s\n\n" "chore" "Maintenance tasks"
+	printf "%-10s %s\n" "!" "Indicates a breaking change: the commit introduces a change incompatible with the previous version. It is placed after the type (feat!:)"
+    printf "%-10s %s\n" "BREAKING CHANGE:" "Explicitly describes the breaking change used in the body or footer"
+	echo
+	echo "Commit parts:"
+	echo 'git commit -m "<header>" -m "<body>" -m "<footer>"'
+	echo
+    printf "%-10s %s\n" "header" "A short description of the change: type(scope): description"
+    printf "%-10s %s\n" "body" "A more detailed explanation of what was changed and why"
+    printf "%-10s %s\n" "footer" "Additional information such as BREAKING CHANGE: or issue references"
+
+}
+
 
 
 # ==== ZLE widgets ====

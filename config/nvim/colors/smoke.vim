@@ -11,7 +11,7 @@
 "#
 
 " GUI color definitions
-let s:gui00 = "19171d"
+let s:gui00 = "17151b"
 let s:gui01 = "26232a"
 let s:gui02 = "585260"
 let s:gui03 = "655f6d"
