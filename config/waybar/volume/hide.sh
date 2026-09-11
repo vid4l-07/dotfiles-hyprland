@@ -1,14 +1,17 @@
+#!/bin/bash
+
 WAYBAR_HEIGHT=32
 CHECK_INTERVAL=0.2
 HIDE_AFTER=3
-
+INTERACTION=/tmp/interaction
 
 hide_waybar() {
+	rm $INTERACTION 2>/dev/null
 	kill $(pgrep -a waybar | grep volume | awk '{print $1}')
 }
 
 while ! [[ -z $(pgrep -a waybar | grep volume | awk '{print $1}') ]]; do
-	last_interaction="$(/bin/cat /home/hvidal/.config/waybar/volume/interaction.txt)"
+	last_interaction="$(/bin/cat $INTERACTION)"
 
 	now=$(date +%s)
 

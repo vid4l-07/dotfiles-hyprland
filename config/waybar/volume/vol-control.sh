@@ -6,7 +6,7 @@ show(){
 	fi
 }
 
-INTERACTION="/home/hvidal/.config/waybar/volume/interaction.txt"
+INTERACTION="/tmp/interaction"
 LOCKFILE="/tmp/vol.lock"
 
 if ! [ -e $LOCKFILE ];then  # Esto es por si se ejecuta dos veces. Con este if solo se ejecuta una vez por pulsacion.

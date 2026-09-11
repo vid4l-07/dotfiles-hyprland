@@ -212,7 +212,7 @@ def choose(entries: list[dict]):
 
                 "--height=100%",
                 "--layout=reverse",
-                "--padding=1",
+                "--padding=2",
                 "--no-scrollbar",
                 "--separator= ",
                 "--gutter= ",

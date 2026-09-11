@@ -66,7 +66,7 @@
 		"custom/spotify":{
 			"format": " {text}",
 			"tooltip": false,
-			"exec": "python $HOME/.config/waybar/scripts/spotify_status.py; /bin/bash $HOME/.config/waybar/scripts/spotify_image.sh",
+			"exec": "/bin/bash $HOME/.config/waybar/scripts/spotify_image.sh",
 			"interval": 3,
 			"on-click": "flatpak run com.spotify.Client",
 		},
@@ -82,9 +82,9 @@
 		"custom/target":{
 			"format": "{text}",
 			"tooltip": false,
-			"exec": "/bin/cat $HOME/.config/waybar/scripts/target.txt",
+			"exec": "/bin/cat /tmp/target 2>/dev/null",
 			"interval": 5,
-			"on-click": "echo -n \"$(/bin/cat $HOME/.config/waybar/scripts/target.txt)\" | wl-copy",
+			"on-click": "echo -n \"$(/bin/cat /tmp/target 2>/dev/null)\" | wl-copy",
 		},
 		"clock": {
 			"interval": 60,

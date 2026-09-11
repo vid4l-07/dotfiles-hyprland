@@ -269,8 +269,7 @@ settarget() {
     local ip_address="$1"
     local machine_name="$2"
 
-    echo "$ip_address $machine_name" \
-        > "$HOME/.config/waybar/scripts/target.txt"
+    echo "$ip_address $machine_name" > "/tmp/target"
 }
 
 # Extract ports from an Nmap scan
