@@ -17,6 +17,10 @@ fi
 
 echo "$theme"
 
+declare -A wallpapers
+wallpapers[black]='$HOME/.config/wallpapers/1.jpeg'
+wallpapers[light]='$HOME/.config/wallpapers/11.jpg'
+
 
 hyprwallpaper=$HOME/.config/hypr/hyprpaper.conf
 kitty=$HOME/.config/kitty/color.ini
@@ -28,11 +32,6 @@ vim=$HOME/.config/nvim/colors/theme.vim
 declare -A vimthemes
 vimthemes[black]='smoke'
 vimthemes[light]='smoke-light'
-
-
-declare -A wallpapers
-wallpapers[black]='$HOME/.config/wallpapers/1.jpeg'  #'$HOME/.config/wallpapers/8.jpg' #$HOME/.config/wallpapers/15.jpg
-wallpapers[light]='$HOME/.config/wallpapers/11.jpg'
 
 echo "colorscheme ${vimthemes[$theme]}" > $vim
 

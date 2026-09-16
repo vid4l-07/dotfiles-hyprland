@@ -3,6 +3,8 @@
 import curses
 import subprocess
 
+curses.set_escdelay(25)
+
 COMMANDS = {
         "Shutdown": ["systemctl", "poweroff"],
         "Reboot":   ["systemctl", "reboot"],
@@ -41,7 +43,7 @@ def main(stdscr):
         stdscr.refresh()
         key = stdscr.getch()
 
-        if key == ord("q"):
+        if key in (ord("q"), 27):
             return
         elif key in (curses.KEY_UP, ord("k")):
             idx = (idx - 1) % len(items)
