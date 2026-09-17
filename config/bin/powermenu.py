@@ -36,7 +36,8 @@ def main(stdscr):
         for i, item in enumerate(items):
             y = h // 2 - len(items) // 2 + i
             label = f"  {item}" + " " * (max_width - len(item) + 2)
-            x = w // 4
+            label_width = max_width + 4
+            x = (w - label_width) // 2
             attr = curses.color_pair(2) if i == idx else curses.color_pair(1)
             stdscr.addstr(y, x, label, attr)
 
