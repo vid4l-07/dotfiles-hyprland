@@ -25,7 +25,7 @@ https://github.com/user-attachments/assets/5441a8aa-1b3b-45ae-b679-7fc5474403a5
 |:---------|:-----|
 |WM| Hyprland|
 |Bar| waybar|
-|Launcher| wofi|
+|Launcher| fzf|
 | Terminal| kitty|
 | Notifications| mako|
 | Shell| zsh|
