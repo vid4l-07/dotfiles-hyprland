@@ -26,7 +26,6 @@ hyprwallpaper=$HOME/.config/hypr/hyprpaper.conf
 kitty=$HOME/.config/kitty/color.ini
 waybar=$HOME/.config/waybar/style.css
 mako=$HOME/.config/mako/config
-wofi=$HOME/.config/wofi/style.css
 vim=$HOME/.config/nvim/colors/theme.vim
 
 declare -A vimthemes
@@ -48,7 +47,7 @@ set -o allexport
 source $colors
 set +o allexport
 
-for i in $kitty $waybar $mako $wofi; do
+for i in $kitty $waybar $mako; do
 	envsubst < "$i.template" > "$i"
 done
 
