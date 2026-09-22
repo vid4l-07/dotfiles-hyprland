@@ -2,7 +2,7 @@
 
 show(){
 	if [[ -z  $(pgrep -a waybar | grep volume | awk '{print $1}') ]];then
-		waybar -c /home/hvidal/.config/waybar/volume/config-volume.jsonc -s /home/hvidal/.config/waybar/volume/style-volume.css &
+		waybar -c $HOME/.config/waybar/volume/config-volume.jsonc -s $HOME/.config/waybar/volume/style-volume.css &
 	fi
 }
 
