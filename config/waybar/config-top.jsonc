@@ -91,7 +91,7 @@
 			"max-length": 25,
 			"tooltip": false,
 			"format": "{:%H:%M}",
-			"format-alt": "{:%a - %b %d - %Y}",
+			"format-alt": "{:%a %d - %b - %Y}",
 		},
 
 		"backlight": {

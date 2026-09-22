@@ -405,3 +405,6 @@ export VISUAL="nvim"
 if [[ -f /etc/zsh_command_not_found ]]; then
     source /etc/zsh_command_not_found
 fi
+
+# opencode
+export PATH=/home/hvidal/.opencode/bin:$PATH

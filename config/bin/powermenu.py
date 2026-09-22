@@ -8,7 +8,7 @@ curses.set_escdelay(25)
 COMMANDS = {
         "Shutdown": ["systemctl", "poweroff"],
         "Reboot":   ["systemctl", "reboot"],
-        "Lock":     ["loginctl", "lock-session"],
+        "Lock":     ["hyprlock"],
         "Logout":   ["hyprctl", "dispatch", "exit"],
         "Suspend":  ["systemctl", "suspend"],
 }
@@ -51,7 +51,7 @@ def main(stdscr):
         elif key in (curses.KEY_DOWN, ord("j")):
             idx = (idx + 1) % len(items)
         elif key in (10, 13, curses.KEY_ENTER):
-            subprocess.run(COMMANDS[items[idx]])
+            subprocess.run(COMMANDS[items[idx]], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
             return
 
 if __name__ == "__main__":
