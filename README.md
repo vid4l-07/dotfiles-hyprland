@@ -92,7 +92,7 @@ Utilities (used by the scripts):
 - `brightnessctl` — backlight control
 - `wireplumber` (`wpctl`) — volume control
 - `wl-clipboard` (`wl-copy`) — clipboard interactions
-- [`bluetui`](https://github.com/pythops/bluetuith) — Bluetooth TUI (bundled binary in `config/waybar/scripts/`)
+- `bluetui` — Bluetooth TUI (bundled binary in `config/waybar/scripts/`)
 - A [Nerd Font](https://www.nerdfonts.com) — a bundle is included in `config/fonts/`
 
 <br>
