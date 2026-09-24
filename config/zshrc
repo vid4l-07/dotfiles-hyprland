@@ -90,8 +90,6 @@ bindkey -M vicmd '\e\e' sudo-command-line
 # Thin vertical cursor
 echo -ne '\e[5 q'
 
-# ~/.config/bin/ver-colores.sh
-
 # Left prompt
 PROMPT=$'\n%F{blue}愛%f [%n@%m] %F{blue}$(short_pwd)%f\n%F{green}❯%f '
 
