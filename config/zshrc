@@ -311,34 +311,52 @@ findcommand() {
 	print -z $(history | awk '{$1=""; sub(/^ /, ""); print}' | fzf)
 }
 
-git-help() {
+git_help() {
     echo "Commits should be small, clear, and specific, briefly describing what was changed and avoiding unrelated changes in the same commit."
 	echo "A scope can be added after the commit type to specify which part of the project is affected"
 	echo
 	echo "FORMAT"
 	echo "  <type>[optional scope][optional !]: <description>"
     echo
-    printf "%-10s %s\n" "Types: "
-    printf "%-10s %s\n" "feat" "A new feature"
-    printf "%-10s %s\n" "fix" "A bug fix"
-	printf "%-10s %s\n" "style" "Formatting or style changes that do not affect the logic"
-    printf "%-10s %s\n" "refactor" "Code changes without changing its behavior"
-    printf "%-10s %s\n" "docs" "Documentation changes"
-    printf "%-10s %s\n" "test" "Adding or modifying tests"
-    printf "%-10s %s\n" "perf" "A performance improvement"
-    printf "%-10s %s\n" "build" "Changes to the build system or dependencies"
-    printf "%-10s %s\n" "ci" "CI/CD changes"
-    printf "%-10s %s\n\n" "chore" "Maintenance tasks"
-	printf "%-10s %s\n" "!" "Indicates a breaking change: the commit introduces a change incompatible with the previous version. It is placed after the type (feat!:)"
-    printf "%-10s %s\n" "BREAKING CHANGE:" "Explicitly describes the breaking change used in the body or footer"
+    printf "%-10s\n" "Types: "
+    printf "\t%-10s %s\n" "feat" "A new feature"
+    printf "\t%-10s %s\n" "fix" "A bug fix"
+	printf "\t%-10s %s\n" "style" "Formatting or style changes that do not affect the logic"
+    printf "\t%-10s %s\n" "refactor" "Code changes without changing its behavior"
+    printf "\t%-10s %s\n" "docs" "Documentation changes"
+    printf "\t%-10s %s\n" "test" "Adding or modifying tests"
+    printf "\t%-10s %s\n" "perf" "A performance improvement"
+    printf "\t%-10s %s\n" "build" "Changes to the build system or dependencies"
+    printf "\t%-10s %s\n" "ci" "CI/CD changes"
+    printf "\t%-10s %s\n" "chore" "Maintenance tasks"
+	printf "\t%-10s %s\n" "!" "Indicates a breaking change: the commit introduces a change incompatible with the previous version. It is placed after the type (feat!:)"
+    printf "\t%-10s %s\n" "BREAKING CHANGE:" "Explicitly describes the breaking change used in the body or footer"
 	echo
 	echo "Commit parts:"
 	echo 'git commit -m "<header>" -m "<body>" -m "<footer>"'
 	echo
-    printf "%-10s %s\n" "header" "A short description of the change: type(scope): description"
-    printf "%-10s %s\n" "body" "A more detailed explanation of what was changed and why"
-    printf "%-10s %s\n" "footer" "Additional information such as BREAKING CHANGE: or issue references"
+    printf "\t%-10s %s\n" "header" "A short description of the change: type(scope): description"
+    printf "\t%-10s %s\n" "body" "A more detailed explanation of what was changed and why"
+    printf "\t%-10s %s\n" "footer" "Additional information such as BREAKING CHANGE: or issue references"
+	echo
 
+}
+
+disk_help() {
+	echo "Disk commands:"
+	printf "\t%-25s %s\n" "du -sh ."                  "Current directory size"
+	printf "\t%-25s %s\n" "du -sh <dir>"              "Directory size"
+	printf "\t%-25s %s\n" "du -h --max-depth=1"       "Subdirectory sizes"
+	printf "\t%-25s %s\n" "lsblk"                     "View disks and partitions"
+	printf "\t%-25s %s\n" "lsblk -f"                  "Disks + filesystems"
+	printf "\t%-25s %s\n" "fdisk -l"                  "View partitions (root)"
+	printf "\t%-25s %s\n" "ln -s <target> <link>"     "create symlink: link -> target"
+	echo
+	echo "Disk usage:"
+	printf "\t%-25s %s\n" "df -h"                     "Free/used disk space"
+	printf "\t%-25s %s\n" "du -sh * | sort -hr"       "Sort directories by size"
+	printf "\t%-25s %s\n" "du -ah . | sort -hr"       "Largest files/directories"
+	echo
 }
 
 

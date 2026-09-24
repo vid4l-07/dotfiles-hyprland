@@ -76,7 +76,7 @@
 			"tooltip": false,
 			"exec": "/bin/cat $HOME/.config/waybar/scripts/theme.txt",
 			"interval": 3,
-			"on-click": "$HOME/.config/hypr/scripts/toggle-theme.sh",
+			"on-click": "$HOME/.config/theme/toggle.sh",
 		},
 
 		"custom/target":{
